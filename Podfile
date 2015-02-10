@@ -1,1 +1,2 @@
 pod 'CCNStatusItem'
+pod 'MASShortcut'

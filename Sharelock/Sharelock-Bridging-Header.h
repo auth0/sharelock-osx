@@ -3,3 +3,4 @@
 //
 
 #import <CCNStatusItem/CCNStatusItem.h>
+#import <MASShortcut/Shortcut.h>

@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CCNStatusItem"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CCNStatusItem"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-CCNStatusItem"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CCNStatusItem" "${PODS_ROOT}/Headers/Public/MASShortcut"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CCNStatusItem" -isystem "${PODS_ROOT}/Headers/Public/MASShortcut"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-CCNStatusItem" -l"Pods-MASShortcut" -framework "AppKit" -framework "Carbon"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

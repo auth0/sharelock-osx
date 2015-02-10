@@ -40,6 +40,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         CCNStatusItem.setWindowAppearance(appearance)
         CCNStatusItem.presentStatusItemWithImage(image, contentViewController: sharelockController)
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+        let modifiers: UInt = NSEventModifierFlags.ControlKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue | NSEventModifierFlags.CommandKeyMask.rawValue
+        let key: UInt = UInt(kVK_ANSI_V)
+        let shortcut = MASShortcut(keyCode: key, modifierFlags: modifiers)
+        let action = { () -> Void in
+            CCNStatusItem.sharedInstance().statusItem.button?.performClick(nil)
+            return;
+        }
+        MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: action)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
