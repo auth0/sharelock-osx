@@ -151,6 +151,7 @@ DQ
 </string>
                             </buttonCell>
                             <connections>
+                                <action selector="shareLink:" target="-2" id="hMM-G3-7tU"/>
                                 <outlet property="nextKeyView" destination="8Rp-xn-poy" id="09Z-S3-XP5"/>
                             </connections>
                         </button>

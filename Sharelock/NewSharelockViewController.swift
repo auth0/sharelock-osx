@@ -43,6 +43,18 @@ class NewSharelockViewController: NSViewController {
         notificationCenter.addObserver(self, selector: "textChanged:", name: NSControlTextDidChangeNotification, object: nil)
     }
 
+    @IBAction func shareLink(sender: AnyObject) {
+        let pasteboard = NSPasteboard.generalPasteboard()
+        pasteboard.clearContents()
+        pasteboard.writeObjects([self.linkField.stringValue])
+        CCNStatusItem.sharedInstance().statusItem.button?.performClick(self)
+        let notification = NSUserNotification()
+        notification.title = "Ready to share"
+        notification.informativeText = "The link to your data is in your clipboard"
+        notification.soundName = NSUserNotificationDefaultSoundName
+        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    }
+
     override func viewDidDisappear() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
