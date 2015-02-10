@@ -34,23 +34,67 @@ class NewSharelockViewController: NSViewController {
         super.viewDidLoad()
         self.fieldContainerView.wantsLayer = true
         self.fieldContainerView.layer?.backgroundColor = NSColor.whiteColor().CGColor
-        self.progressIndicator.startAnimation(self)
     }
 
     override func viewDidAppear() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "finishedEditing:", name: NSControlTextDidEndEditingNotification, object: nil)
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "finishedEditing:", name: NSControlTextDidEndEditingNotification, object: nil)
+        notificationCenter.addObserver(self, selector: "textChanged:", name: NSControlTextDidChangeNotification, object: nil)
     }
 
     override func viewDidDisappear() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+    func textChanged(notification: NSNotification) {
+        self.linkField.stringValue = ""
+    }
+
     func finishedEditing(notification: NSNotification) {
         let data = self.dataField.stringValue
         let sharelist = self.shareField.stringValue
+        let list = split(sharelist, {$0 == ","}, maxSplit: Int.max, allowEmptySlices: false)
+                    .map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())}
+        let valid = self.validateShareList(list)
 
-        if (countElements(data) > 0 && countElements(sharelist) > 0) {
+        if (countElements(data) > 0 && valid) {
             println("Generating link...")
+            self.linkField.stringValue = ""
+            self.progressIndicator.startAnimation(self)
+            let params = ["d": data, "a": sharelist]
+            request(.POST, "https://sharelock.io/create", parameters: params)
+            .validate(statusCode: 200..<300)
+            .responseString { [weak self] (_, response, responseString, err) in
+                self?.progressIndicator.stopAnimation(self)
+                if let error = err {
+                    println("Failed to fetch link with error \(error), response \(responseString) and status code \(response?.statusCode)")
+                    if (response?.statusCode == 400) {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            let notification = NSUserNotification()
+                            notification.title = "Couldn't generate link"
+                            notification.informativeText = "Please check that you provide a valid email or twitter handle"
+                            notification.soundName = NSUserNotificationDefaultSoundName
+                            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                        })
+                    }
+                } else {
+                    println("Obtained link \(responseString)")
+                    self?.linkField.stringValue = "https://sharelock.io\(responseString!)"
+                }
+            }
         }
+    }
+
+    private func validateShareList(list: [String]) -> Bool {
+        if (countElements(list) == 0) {
+            return false
+        }
+        let email = NSPredicate(format: "SELF MATCHES %@", "^[^\\@]+\\@[^\\.]+\\..+")
+        let twitter = NSPredicate(format: "SELF MATCHES %@", "^\\@([^\\.]+)")
+        let domain = NSPredicate(format: "SELF MATCHES %@", "^\\@([^\\.]+\\..+)")
+        let predicates: Array = [email!, twitter!, domain!]
+        let predicate = NSCompoundPredicate.orPredicateWithSubpredicates(predicates)
+        let validList = list.filter { return predicate.evaluateWithObject($0) }
+        return countElements(validList) == countElements(list)
     }
 }

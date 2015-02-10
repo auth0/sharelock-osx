@@ -121,9 +121,9 @@
                             <font key="titleFont" metaFont="system"/>
                         </box>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-DG-ymb">
-                            <rect key="frame" x="160" y="118" width="222" height="80"/>
+                            <rect key="frame" x="160" y="78" width="222" height="120"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="80" id="3Op-d3-cft"/>
+                                <constraint firstAttribute="height" constant="120" id="3Op-d3-cft"/>
                             </constraints>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="cpc-Pn-At9">
                                 <font key="font" metaFont="system"/>

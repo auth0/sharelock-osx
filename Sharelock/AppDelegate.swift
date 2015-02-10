@@ -23,11 +23,10 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotificationCenterDelegate {
 
     @IBOutlet var menu: NSMenu!
 
-    var statusItem:AXStatusItemPopup!
     var sharelockController: NewSharelockViewController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -40,9 +39,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         appearance.presentationTransition = CCNPresentationTransition.SlideAndFade
         CCNStatusItem.setWindowAppearance(appearance)
         CCNStatusItem.presentStatusItemWithImage(image, contentViewController: sharelockController)
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
+    }
+
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+        return true
     }
 }
