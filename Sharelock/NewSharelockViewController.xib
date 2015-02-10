@@ -10,6 +10,7 @@
                 <outlet property="fieldContainerView" destination="YRt-wE-VvO" id="T49-Sq-HqU"/>
                 <outlet property="linkField" destination="GIa-DG-ymb" id="lmd-po-hck"/>
                 <outlet property="progressIndicator" destination="mvA-fc-ti8" id="2AW-WR-dTd"/>
+                <outlet property="shareButton" destination="a5Z-KQ-hhZ" id="fxV-6b-Y4q"/>
                 <outlet property="shareField" destination="DVY-Hb-vOx" id="Lw6-mL-33a"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -67,6 +68,9 @@
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="DVY-Hb-vOx" id="px5-xx-0wU"/>
+                            </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hPv-B4-DJg">
                             <rect key="frame" x="55" y="218" width="89" height="18"/>
@@ -107,6 +111,9 @@
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="a5Z-KQ-hhZ" id="HR3-W4-ftO"/>
+                            </connections>
                         </textField>
                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="vst-pG-hfW">
                             <rect key="frame" x="20" y="208" width="360" height="5"/>
@@ -125,7 +132,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="3Op-d3-cft"/>
                             </constraints>
-                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="cpc-Pn-At9">
+                            <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" id="cpc-Pn-At9">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -134,6 +141,19 @@
                         <progressIndicator fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-fc-ti8">
                             <rect key="frame" x="263" y="179" width="16" height="16"/>
                         </progressIndicator>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a5Z-KQ-hhZ">
+                            <rect key="frame" x="310" y="13" width="76" height="32"/>
+                            <buttonCell key="cell" type="push" title="Share" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gK2-wf-3GD">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                            </buttonCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="8Rp-xn-poy" id="09Z-S3-XP5"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="8Rp-xn-poy" firstAttribute="leading" secondItem="DVY-Hb-vOx" secondAttribute="leading" id="0Xq-hC-Sav"/>
@@ -150,9 +170,11 @@
                         <constraint firstItem="C60-xG-XUl" firstAttribute="centerY" secondItem="8Rp-xn-poy" secondAttribute="centerY" id="RTE-6A-gY6"/>
                         <constraint firstItem="9NK-pa-y7L" firstAttribute="trailing" secondItem="C60-xG-XUl" secondAttribute="trailing" id="VSv-hX-lht"/>
                         <constraint firstAttribute="trailing" secondItem="GSK-lj-Y8x" secondAttribute="trailing" constant="20" id="ffO-7H-2dM"/>
+                        <constraint firstAttribute="trailing" secondItem="a5Z-KQ-hhZ" secondAttribute="trailing" constant="20" id="iBV-1x-CzN"/>
                         <constraint firstItem="8Rp-xn-poy" firstAttribute="top" secondItem="GSK-lj-Y8x" secondAttribute="bottom" constant="16" id="nv7-jy-rRj"/>
                         <constraint firstItem="GSK-lj-Y8x" firstAttribute="leading" secondItem="YRt-wE-VvO" secondAttribute="leading" constant="20" id="rti-mR-pR9"/>
                         <constraint firstItem="9NK-pa-y7L" firstAttribute="trailing" secondItem="hPv-B4-DJg" secondAttribute="trailing" id="tbV-3o-y18"/>
+                        <constraint firstAttribute="bottom" secondItem="a5Z-KQ-hhZ" secondAttribute="bottom" constant="20" id="vOh-Tx-dTt"/>
                         <constraint firstItem="8Rp-xn-poy" firstAttribute="leading" secondItem="C60-xG-XUl" secondAttribute="trailing" constant="20" id="y95-av-quY"/>
                     </constraints>
                 </customView>
@@ -168,6 +190,7 @@
             </constraints>
             <point key="canvasLocation" x="589" y="404"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="PaN-eD-0TL"/>
     </objects>
     <resources>
         <image name="ic-settings" width="17" height="17"/>

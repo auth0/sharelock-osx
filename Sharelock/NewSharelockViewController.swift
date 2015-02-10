@@ -24,6 +24,7 @@ import Cocoa
 
 class NewSharelockViewController: NSViewController {
 
+    @IBOutlet weak var shareButton: NSButton!
     @IBOutlet weak var linkField: NSTextField!
     @IBOutlet weak var shareField: NSTextField!
     @IBOutlet weak var dataField: NSTextField!
@@ -48,6 +49,7 @@ class NewSharelockViewController: NSViewController {
 
     func textChanged(notification: NSNotification) {
         self.linkField.stringValue = ""
+        self.shareButton.enabled = false
     }
 
     func finishedEditing(notification: NSNotification) {
@@ -56,6 +58,7 @@ class NewSharelockViewController: NSViewController {
         let list = split(sharelist, {$0 == ","}, maxSplit: Int.max, allowEmptySlices: false)
                     .map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())}
         let valid = self.validateShareList(list)
+        self.shareButton.enabled = false
 
         if (countElements(data) > 0 && valid) {
             println("Generating link...")
@@ -80,6 +83,9 @@ class NewSharelockViewController: NSViewController {
                 } else {
                     println("Obtained link \(responseString)")
                     self?.linkField.stringValue = "https://sharelock.io\(responseString!)"
+                    self?.shareButton.enabled = true
+                    self?.linkField.resignFirstResponder()
+                    self?.dataField.resignFirstResponder()
                 }
             }
         }
