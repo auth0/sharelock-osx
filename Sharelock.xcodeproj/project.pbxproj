@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E67BE5EB39C43360ACC75F4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2601ECB15B09AFBAE533CF73 /* libPods.a */; };
+		5FEA28D21A86CB1300A03CF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28D11A86CB1300A03CF1 /* AppDelegate.swift */; };
+		5FEA28D61A86CB1300A03CF1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA28D51A86CB1300A03CF1 /* Images.xcassets */; };
+		5FEA28E51A86CB1300A03CF1 /* SharelockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28E41A86CB1300A03CF1 /* SharelockTests.swift */; };
+		5FEA28EF1A88FEA500A03CF1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA28EE1A88FEA500A03CF1 /* MainMenu.xib */; };
+		5FEA28FA1A8933CC00A03CF1 /* NewSharelockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28F81A8933CC00A03CF1 /* NewSharelockViewController.swift */; };
+		5FEA28FB1A8933CC00A03CF1 /* NewSharelockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA28F91A8933CC00A03CF1 /* NewSharelockViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5FEA28DF1A86CB1300A03CF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FEA28C41A86CB1300A03CF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FEA28CB1A86CB1300A03CF1;
+			remoteInfo = Sharelock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2601ECB15B09AFBAE533CF73 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		43ADBE6C7FCC85D5F692D2E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5FEA28CC1A86CB1300A03CF1 /* Sharelock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sharelock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FEA28D01A86CB1300A03CF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FEA28D11A86CB1300A03CF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5FEA28D51A86CB1300A03CF1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5FEA28DE1A86CB1300A03CF1 /* SharelockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharelockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FEA28E31A86CB1300A03CF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FEA28E41A86CB1300A03CF1 /* SharelockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharelockTests.swift; sourceTree = "<group>"; };
+		5FEA28EE1A88FEA500A03CF1 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		5FEA28F01A8931C300A03CF1 /* Sharelock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sharelock-Bridging-Header.h"; sourceTree = "<group>"; };
+		5FEA28F81A8933CC00A03CF1 /* NewSharelockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSharelockViewController.swift; sourceTree = "<group>"; };
+		5FEA28F91A8933CC00A03CF1 /* NewSharelockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewSharelockViewController.xib; sourceTree = "<group>"; };
+		BAB818F429E001E218A0B5FE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FEA28C91A86CB1300A03CF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E67BE5EB39C43360ACC75F4 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FEA28DB1A86CB1300A03CF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		149A36CC714704ED9A40031F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2601ECB15B09AFBAE533CF73 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5FEA28C31A86CB1300A03CF1 = {
+			isa = PBXGroup;
+			children = (
+				5FEA28CE1A86CB1300A03CF1 /* Sharelock */,
+				5FEA28E11A86CB1300A03CF1 /* SharelockTests */,
+				5FEA28CD1A86CB1300A03CF1 /* Products */,
+				793F5F0C54E6002B5026E6FA /* Pods */,
+				149A36CC714704ED9A40031F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5FEA28CD1A86CB1300A03CF1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FEA28CC1A86CB1300A03CF1 /* Sharelock.app */,
+				5FEA28DE1A86CB1300A03CF1 /* SharelockTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FEA28CE1A86CB1300A03CF1 /* Sharelock */ = {
+			isa = PBXGroup;
+			children = (
+				5FEA28D11A86CB1300A03CF1 /* AppDelegate.swift */,
+				5FEA28D51A86CB1300A03CF1 /* Images.xcassets */,
+				5FEA28CF1A86CB1300A03CF1 /* Supporting Files */,
+				5FEA28EE1A88FEA500A03CF1 /* MainMenu.xib */,
+				5FEA28F01A8931C300A03CF1 /* Sharelock-Bridging-Header.h */,
+				5FEA28F81A8933CC00A03CF1 /* NewSharelockViewController.swift */,
+				5FEA28F91A8933CC00A03CF1 /* NewSharelockViewController.xib */,
+			);
+			path = Sharelock;
+			sourceTree = "<group>";
+		};
+		5FEA28CF1A86CB1300A03CF1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5FEA28D01A86CB1300A03CF1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5FEA28E11A86CB1300A03CF1 /* SharelockTests */ = {
+			isa = PBXGroup;
+			children = (
+				5FEA28E41A86CB1300A03CF1 /* SharelockTests.swift */,
+				5FEA28E21A86CB1300A03CF1 /* Supporting Files */,
+			);
+			path = SharelockTests;
+			sourceTree = "<group>";
+		};
+		5FEA28E21A86CB1300A03CF1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5FEA28E31A86CB1300A03CF1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		793F5F0C54E6002B5026E6FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BAB818F429E001E218A0B5FE /* Pods.debug.xcconfig */,
+				43ADBE6C7FCC85D5F692D2E6 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FEA28CB1A86CB1300A03CF1 /* Sharelock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FEA28E81A86CB1300A03CF1 /* Build configuration list for PBXNativeTarget "Sharelock" */;
+			buildPhases = (
+				40A397FA84565972A9A9A0E3 /* Check Pods Manifest.lock */,
+				5FEA28C81A86CB1300A03CF1 /* Sources */,
+				5FEA28C91A86CB1300A03CF1 /* Frameworks */,
+				5FEA28CA1A86CB1300A03CF1 /* Resources */,
+				C892C84D7AA633D4D8A4F76B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sharelock;
+			productName = Sharelock;
+			productReference = 5FEA28CC1A86CB1300A03CF1 /* Sharelock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5FEA28DD1A86CB1300A03CF1 /* SharelockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FEA28EB1A86CB1300A03CF1 /* Build configuration list for PBXNativeTarget "SharelockTests" */;
+			buildPhases = (
+				5FEA28DA1A86CB1300A03CF1 /* Sources */,
+				5FEA28DB1A86CB1300A03CF1 /* Frameworks */,
+				5FEA28DC1A86CB1300A03CF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FEA28E01A86CB1300A03CF1 /* PBXTargetDependency */,
+			);
+			name = SharelockTests;
+			productName = SharelockTests;
+			productReference = 5FEA28DE1A86CB1300A03CF1 /* SharelockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5FEA28C41A86CB1300A03CF1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Auth0;
+				TargetAttributes = {
+					5FEA28CB1A86CB1300A03CF1 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					5FEA28DD1A86CB1300A03CF1 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 5FEA28CB1A86CB1300A03CF1;
+					};
+				};
+			};
+			buildConfigurationList = 5FEA28C71A86CB1300A03CF1 /* Build configuration list for PBXProject "Sharelock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5FEA28C31A86CB1300A03CF1;
+			productRefGroup = 5FEA28CD1A86CB1300A03CF1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FEA28CB1A86CB1300A03CF1 /* Sharelock */,
+				5FEA28DD1A86CB1300A03CF1 /* SharelockTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FEA28CA1A86CB1300A03CF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FEA28FB1A8933CC00A03CF1 /* NewSharelockViewController.xib in Resources */,
+				5FEA28D61A86CB1300A03CF1 /* Images.xcassets in Resources */,
+				5FEA28EF1A88FEA500A03CF1 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FEA28DC1A86CB1300A03CF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40A397FA84565972A9A9A0E3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C892C84D7AA633D4D8A4F76B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FEA28C81A86CB1300A03CF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FEA28FA1A8933CC00A03CF1 /* NewSharelockViewController.swift in Sources */,
+				5FEA28D21A86CB1300A03CF1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FEA28DA1A86CB1300A03CF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FEA28E51A86CB1300A03CF1 /* SharelockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5FEA28E01A86CB1300A03CF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FEA28CB1A86CB1300A03CF1 /* Sharelock */;
+			targetProxy = 5FEA28DF1A86CB1300A03CF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5FEA28E61A86CB1300A03CF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5FEA28E71A86CB1300A03CF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5FEA28E91A86CB1300A03CF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAB818F429E001E218A0B5FE /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sharelock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sharelock/Sharelock-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5FEA28EA1A86CB1300A03CF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43ADBE6C7FCC85D5F692D2E6 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sharelock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sharelock/Sharelock-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		5FEA28EC1A86CB1300A03CF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SharelockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sharelock.app/Contents/MacOS/Sharelock";
+			};
+			name = Debug;
+		};
+		5FEA28ED1A86CB1300A03CF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SharelockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sharelock.app/Contents/MacOS/Sharelock";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FEA28C71A86CB1300A03CF1 /* Build configuration list for PBXProject "Sharelock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FEA28E61A86CB1300A03CF1 /* Debug */,
+				5FEA28E71A86CB1300A03CF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FEA28E81A86CB1300A03CF1 /* Build configuration list for PBXNativeTarget "Sharelock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FEA28E91A86CB1300A03CF1 /* Debug */,
+				5FEA28EA1A86CB1300A03CF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FEA28EB1A86CB1300A03CF1 /* Build configuration list for PBXNativeTarget "SharelockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FEA28EC1A86CB1300A03CF1 /* Debug */,
+				5FEA28ED1A86CB1300A03CF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5FEA28C41A86CB1300A03CF1 /* Project object */;
+}

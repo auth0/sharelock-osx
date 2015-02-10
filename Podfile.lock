@@ -1,0 +1,13 @@
+PODS:
+  - AXStatusItemPopup (0.0.2)
+  - CCNStatusItem (0.2.2)
+
+DEPENDENCIES:
+  - AXStatusItemPopup (~> 0.0.2)
+  - CCNStatusItem
+
+SPEC CHECKSUMS:
+  AXStatusItemPopup: 917ce6c064c703de0814c68d4d9d2c7881fd39e1
+  CCNStatusItem: ae782d3e89559a66faef6e8565d2945c8142c7ee
+
+COCOAPODS: 0.36.0.beta.2
