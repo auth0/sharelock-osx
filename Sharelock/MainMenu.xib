@@ -19,6 +19,14 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
+                <menuItem title="Application" id="0F3-Nk-mrs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Application" id="9BH-rc-w4U">
+                        <items>
+                            <menuItem title="Preferences…" keyEquivalent="," id="OYf-mT-SZl"/>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Edit" id="U3e-tK-FJP">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="vHf-vQ-B2S">

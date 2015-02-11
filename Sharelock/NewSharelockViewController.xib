@@ -11,6 +11,7 @@
                 <outlet property="fieldContainerView" destination="YRt-wE-VvO" id="T49-Sq-HqU"/>
                 <outlet property="linkField" destination="GIa-DG-ymb" id="lmd-po-hck"/>
                 <outlet property="progressIndicator" destination="mvA-fc-ti8" id="2AW-WR-dTd"/>
+                <outlet property="settingsMenu" destination="EWP-Ci-4BS" id="2d6-ju-N1a"/>
                 <outlet property="shareButton" destination="a5Z-KQ-hhZ" id="fxV-6b-Y4q"/>
                 <outlet property="shareField" destination="DVY-Hb-vOx" id="Lw6-mL-33a"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -43,6 +44,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="showMenu:" target="-2" id="lgS-Om-e5H"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -219,6 +223,22 @@ DQ
             <point key="canvasLocation" x="639.5" y="395.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="PaN-eD-0TL"/>
+        <menu title="Sharelock" showsStateColumn="NO" autoenablesItems="NO" id="EWP-Ci-4BS">
+            <items>
+                <menuItem title="Settings" indentationLevel="1" id="Ox7-MB-L4X">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showSettings:" target="-2" id="Kov-d6-l2v"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" indentationLevel="1" id="l4n-gF-RJH">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quitSharelock:" target="-2" id="GtV-Rq-WWJ"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
     </objects>
     <resources>
         <image name="ic-settings" width="17" height="17"/>

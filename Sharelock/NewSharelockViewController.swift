@@ -24,6 +24,7 @@ import Cocoa
 
 class NewSharelockViewController: NSViewController {
 
+    @IBOutlet var settingsMenu: NSMenu!
     @IBOutlet weak var encryptMessage: NSTextField!
     @IBOutlet weak var shareButton: NSButton!
     @IBOutlet weak var linkField: NSTextField!
@@ -45,6 +46,22 @@ class NewSharelockViewController: NSViewController {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "finishedEditing:", name: NSControlTextDidEndEditingNotification, object: nil)
         notificationCenter.addObserver(self, selector: "textChanged:", name: NSControlTextDidChangeNotification, object: nil)
+    }
+
+    @IBAction func showSettings(sender: AnyObject) {
+    }
+
+    @IBAction func quitSharelock(sender: AnyObject) {
+        NSApplication.sharedApplication().terminate(nil)
+    }
+
+    @IBAction func showMenu(sender: AnyObject) {
+        let button = sender as NSButton
+        let frame = button.frame
+        let menuOrigin = button.superview?.convertPoint(NSMakePoint(frame.origin.x, frame.origin.y - 10), toView: nil)
+        let windowNumber = button.window?.windowNumber
+        let event = NSEvent.mouseEventWithType(NSEventType.LeftMouseDown, location: menuOrigin!, modifierFlags: NSEventModifierFlags.allZeros, timestamp: 0, windowNumber: windowNumber!, context: button.window?.graphicsContext, eventNumber: 0, clickCount: 1, pressure: 1)
+        NSMenu.popUpContextMenu(self.settingsMenu, withEvent: event!, forView: button)
     }
 
     @IBAction func shareLink(sender: AnyObject) {
