@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         sharelockController = NewSharelockViewController(nibName: "NewSharelockViewController", bundle: nil)
-        sharelockController.preferredContentSize = NSSize(width: 400, height: 400)
+        sharelockController.preferredContentSize = NSSize(width: 651, height: 400)
         let image = NSImage(named: "Sharelock-MenuBar")
         image?.setTemplate(true)
         let appearance = CCNStatusItemWindowAppearance.defaultAppearance()

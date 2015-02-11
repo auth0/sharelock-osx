@@ -24,6 +24,7 @@ import Cocoa
 
 class NewSharelockViewController: NSViewController {
 
+    @IBOutlet weak var encryptMessage: NSTextField!
     @IBOutlet weak var shareButton: NSButton!
     @IBOutlet weak var linkField: NSTextField!
     @IBOutlet weak var shareField: NSTextField!
@@ -38,6 +39,9 @@ class NewSharelockViewController: NSViewController {
     }
 
     override func viewDidAppear() {
+        self.dataField.stringValue = ""
+        self.shareField.stringValue = ""
+        self.linkField.stringValue = ""
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "finishedEditing:", name: NSControlTextDidEndEditingNotification, object: nil)
         notificationCenter.addObserver(self, selector: "textChanged:", name: NSControlTextDidChangeNotification, object: nil)
@@ -65,6 +69,9 @@ class NewSharelockViewController: NSViewController {
     }
 
     func finishedEditing(notification: NSNotification) {
+        if countElements(self.linkField.stringValue) > 0 {
+            return;
+        }
         let data = self.dataField.stringValue
         let sharelist = self.shareField.stringValue
         let list = split(sharelist, {$0 == ","}, maxSplit: Int.max, allowEmptySlices: false)
@@ -74,13 +81,12 @@ class NewSharelockViewController: NSViewController {
 
         if (countElements(data) > 0 && valid) {
             println("Generating link...")
-            self.linkField.stringValue = ""
-            self.progressIndicator.startAnimation(self)
+            self.showProgress(true)
             let params = ["d": data, "a": sharelist]
             request(.POST, "https://sharelock.io/create", parameters: params)
             .validate(statusCode: 200..<300)
             .responseString { [weak self] (_, response, responseString, err) in
-                self?.progressIndicator.stopAnimation(self)
+                self?.showProgress(false)
                 if let error = err {
                     println("Failed to fetch link with error \(error), response \(responseString) and status code \(response?.statusCode)")
                     if (response?.statusCode == 400) {
@@ -100,6 +106,19 @@ class NewSharelockViewController: NSViewController {
                     self?.dataField.resignFirstResponder()
                 }
             }
+        }
+    }
+
+    private func showProgress(inProgress:Bool) {
+        if inProgress {
+            self.linkField.stringValue = ""
+            self.progressIndicator.startAnimation(self)
+            self.linkField.hidden = true
+            self.encryptMessage.hidden = false
+        } else {
+            self.progressIndicator.stopAnimation(self)
+            self.linkField.hidden = false
+            self.encryptMessage.hidden = true
         }
     }
 
