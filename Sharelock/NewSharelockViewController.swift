@@ -72,14 +72,18 @@ class NewSharelockViewController: NSViewController {
         if countElements(self.linkField.stringValue) > 0 {
             return;
         }
+        self.shareButton.enabled = false
+
         let data = self.dataField.stringValue
         let sharelist = self.shareField.stringValue
         let list = split(sharelist, {$0 == ","}, maxSplit: Int.max, allowEmptySlices: false)
                     .map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())}
-        let valid = self.validateShareList(list)
-        self.shareButton.enabled = false
+        let shareListIsValid = self.validateShareList(list)
+        let dataIsValid = (1...500).contains(countElements(data))
 
-        if (countElements(data) > 0 && valid) {
+        self.dataField.textColor = dataIsValid || countElements(data) == 0 ? NSColor.blackColor() : NSColor.redColor()
+        self.shareField.textColor = shareListIsValid || countElements(sharelist) == 0 ? NSColor.blackColor() : NSColor.redColor()
+        if (dataIsValid && shareListIsValid) {
             println("Generating link...")
             self.showProgress(true)
             let params = ["d": data, "a": sharelist]
