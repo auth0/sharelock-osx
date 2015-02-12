@@ -27,7 +27,7 @@ class SharelockMainViewController: NSViewController {
     @IBOutlet var settingsMenu: NSMenu!
     @IBOutlet weak var encryptMessage: NSTextField!
     @IBOutlet weak var shareButton: NSButton!
-    @IBOutlet weak var linkField: NSTextField!
+    @IBOutlet weak var linkField: HyperlinkTextField!
     @IBOutlet weak var shareField: NSTextField!
     @IBOutlet weak var dataField: NSTextField!
     @IBOutlet weak var fieldContainerView: NSView!
@@ -129,7 +129,13 @@ class SharelockMainViewController: NSViewController {
                 } else {
                     println("Obtained link \(responseString)")
                     if let link = NSURL(string: responseString!, relativeToURL: baseURL) {
-                        self?.linkField.stringValue = link.absoluteString!
+                        let hyperlinkString = NSMutableAttributedString(string:link.absoluteString!)
+                        hyperlinkString.beginEditing()
+                        hyperlinkString.addAttribute(NSLinkAttributeName, value: link, range: NSMakeRange(0, hyperlinkString.length))
+                        let linkColor = NSColor(calibratedRed: 0.290196078, green: 0.564705882, blue: 0.88627451, alpha: 1)
+                        hyperlinkString.addAttribute(NSForegroundColorAttributeName, value: linkColor, range: NSMakeRange(0, hyperlinkString.length))
+                        hyperlinkString.endEditing()
+                        self?.linkField.attributedStringValue = hyperlinkString
                         self?.shareButton.enabled = true
                         self?.linkField.resignFirstResponder()
                         self?.dataField.resignFirstResponder()

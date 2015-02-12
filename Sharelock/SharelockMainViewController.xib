@@ -122,7 +122,7 @@
                                 <outlet property="nextKeyView" destination="a5Z-KQ-hhZ" id="HR3-W4-ftO"/>
                             </connections>
                         </textField>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-DG-ymb">
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-DG-ymb" customClass="HyperlinkTextField">
                             <rect key="frame" x="143" y="59" width="213" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="c1b-u2-aX4"/>

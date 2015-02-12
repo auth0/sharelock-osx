@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         let image = NSImage(named: "Sharelock-MenuBar")
         image?.setTemplate(true)
         let appearance = CCNStatusItemWindowAppearance.defaultAppearance()
-        appearance.backgroundColor = NSColor(calibratedRed: 0.921568627, green: 0.329411765, blue: 0.141176471, alpha: 1)
+        appearance.backgroundColor = NSColor.blackColor()
         appearance.presentationTransition = CCNPresentationTransition.SlideAndFade
         CCNStatusItem.setWindowAppearance(appearance)
         CCNStatusItem.presentStatusItemWithImage(image, contentViewController: sharelockController)

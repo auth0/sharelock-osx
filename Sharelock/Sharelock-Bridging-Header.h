@@ -4,3 +4,4 @@
 
 #import <CCNStatusItem/CCNStatusItem.h>
 #import <MASShortcut/Shortcut.h>
+#import "HyperlinkTextField.h"
