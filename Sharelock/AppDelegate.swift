@@ -22,39 +22,61 @@
 
 import Cocoa
 
+let ShowSettingsNotification = "SharelockShowSettings"
+let SharelockMainScreenSize = NSSize(width: 374, height: 400)
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotificationCenterDelegate {
 
     @IBOutlet var menu: NSMenu!
 
-    var sharelockController: NewSharelockViewController!
+    var sharelockController: SharelockMainViewController!
+    var settingsController: SettingsWindowController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        sharelockController = NewSharelockViewController(nibName: "NewSharelockViewController", bundle: nil)
-        sharelockController.preferredContentSize = NSSize(width: 651, height: 400)
+        self.registerAppDefaults()
+
+        sharelockController = SharelockMainViewController(nibName: "SharelockMainViewController", bundle: nil)
+        sharelockController.preferredContentSize = SharelockMainScreenSize
         let image = NSImage(named: "Sharelock-MenuBar")
         image?.setTemplate(true)
         let appearance = CCNStatusItemWindowAppearance.defaultAppearance()
-        appearance.backgroundColor = NSColor.blackColor()
+        appearance.backgroundColor = NSColor(calibratedRed: 0.921568627, green: 0.329411765, blue: 0.141176471, alpha: 1)
         appearance.presentationTransition = CCNPresentationTransition.SlideAndFade
         CCNStatusItem.setWindowAppearance(appearance)
         CCNStatusItem.presentStatusItemWithImage(image, contentViewController: sharelockController)
+
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-        let modifiers: UInt = NSEventModifierFlags.ControlKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue | NSEventModifierFlags.CommandKeyMask.rawValue
-        let key: UInt = UInt(kVK_ANSI_V)
-        let shortcut = MASShortcut(keyCode: key, modifierFlags: modifiers)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("showSettings"), name: ShowSettingsNotification, object: nil)
+
         let action = { () -> Void in
             CCNStatusItem.sharedInstance().statusItem.button?.performClick(nil)
             return;
         }
-        MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: action)
+        MASShortcutBinder.sharedBinder().bindShortcutWithDefaultsKey(SharelockGlobalShortcutKey, toAction: action)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
         return true
+    }
+
+    func showSettings() {
+        self.settingsController = SettingsWindowController(windowNibName: "SettingsWindowController")
+        self.settingsController.showWindow(self)
+        NSApp.activateIgnoringOtherApps(true)
+    }
+
+    private func registerAppDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.registerSharelockDefaults()
+        defaults.synchronize()
+
+        let shortcut = SharelockDefaultShortcut()
+        let binder = MASShortcutBinder.sharedBinder()
+        binder.registerDefaultShortcuts([SharelockGlobalShortcutKey: shortcut])
     }
 }

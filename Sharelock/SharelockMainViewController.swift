@@ -1,4 +1,4 @@
-// NewSharelockViewController.swift
+// SharelockMainViewController.swift
 //
 // Copyright (c) 2015 Auth0 (http://auth0.com)
 //
@@ -22,7 +22,7 @@
 
 import Cocoa
 
-class NewSharelockViewController: NSViewController {
+class SharelockMainViewController: NSViewController {
 
     @IBOutlet var settingsMenu: NSMenu!
     @IBOutlet weak var encryptMessage: NSTextField!
@@ -43,12 +43,20 @@ class NewSharelockViewController: NSViewController {
         self.dataField.stringValue = ""
         self.shareField.stringValue = ""
         self.linkField.stringValue = ""
+        self.shareButton.enabled = false
+        self.shareField.toolTip = NSLocalizedString("Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)", comment: "Share Field Tooltip")
+        self.dataField.toolTip = NSLocalizedString("Passwords, keys, URLs, any text up to 500 characters.", comment:"Data Field Tooltip")
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "finishedEditing:", name: NSControlTextDidEndEditingNotification, object: nil)
         notificationCenter.addObserver(self, selector: "textChanged:", name: NSControlTextDidChangeNotification, object: nil)
     }
 
+    override func viewDidDisappear() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
     @IBAction func showSettings(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(ShowSettingsNotification, object: nil)
     }
 
     @IBAction func quitSharelock(sender: AnyObject) {
@@ -70,14 +78,10 @@ class NewSharelockViewController: NSViewController {
         pasteboard.writeObjects([self.linkField.stringValue])
         CCNStatusItem.sharedInstance().statusItem.button?.performClick(self)
         let notification = NSUserNotification()
-        notification.title = "Ready to share"
-        notification.informativeText = "The link to your data is in your clipboard"
+        notification.title = NSLocalizedString("Ready to share", comment: "Link in Clipboard Title")
+        notification.informativeText = NSLocalizedString("Your secured link is in your Clipboard", comment: "Link in Clipboard Message")
         notification.soundName = NSUserNotificationDefaultSoundName
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
-    }
-
-    override func viewDidDisappear() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     func textChanged(notification: NSNotification) {
@@ -103,8 +107,11 @@ class NewSharelockViewController: NSViewController {
         if (dataIsValid && shareListIsValid) {
             println("Generating link...")
             self.showProgress(true)
+
+            let baseURL = NSUserDefaults.standardUserDefaults().sharelockURL()!
+            let newURL = NSURL(string: "create", relativeToURL: baseURL)!
             let params = ["d": data, "a": sharelist]
-            request(.POST, "https://sharelock.io/create", parameters: params)
+            request(.POST, newURL, parameters: params)
             .validate(statusCode: 200..<300)
             .responseString { [weak self] (_, response, responseString, err) in
                 self?.showProgress(false)
@@ -113,18 +120,20 @@ class NewSharelockViewController: NSViewController {
                     if (response?.statusCode == 400) {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             let notification = NSUserNotification()
-                            notification.title = "Couldn't generate link"
-                            notification.informativeText = "Please check that you provide a valid email or twitter handle"
+                            notification.title = NSLocalizedString("Couldn't generate link", comment: "Link Generation Failed Title")
+                            notification.informativeText = NSLocalizedString("Please check that you provide a valid email or twitter handle", comment: "Link Generation Failed Message")
                             notification.soundName = NSUserNotificationDefaultSoundName
                             NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                         })
                     }
                 } else {
                     println("Obtained link \(responseString)")
-                    self?.linkField.stringValue = "https://sharelock.io\(responseString!)"
-                    self?.shareButton.enabled = true
-                    self?.linkField.resignFirstResponder()
-                    self?.dataField.resignFirstResponder()
+                    if let link = NSURL(string: responseString!, relativeToURL: baseURL) {
+                        self?.linkField.stringValue = link.absoluteString!
+                        self?.shareButton.enabled = true
+                        self?.linkField.resignFirstResponder()
+                        self?.dataField.resignFirstResponder()
+                    }
                 }
             }
         }

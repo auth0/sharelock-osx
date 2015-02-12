@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F9DC0D51A8CEA230059516B /* SharelockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DC0D41A8CEA230059516B /* SharelockUserDefaults.swift */; };
 		5FC8B00C1A8A5BC300A42D87 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8B00B1A8A5BC300A42D87 /* Alamofire.swift */; };
+		5FD48F941A8BF650005E3680 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD48F921A8BF650005E3680 /* SettingsWindowController.swift */; };
+		5FD48F951A8BF650005E3680 /* SettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD48F931A8BF650005E3680 /* SettingsWindowController.xib */; };
 		5FEA28D21A86CB1300A03CF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28D11A86CB1300A03CF1 /* AppDelegate.swift */; };
 		5FEA28D61A86CB1300A03CF1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA28D51A86CB1300A03CF1 /* Images.xcassets */; };
 		5FEA28E51A86CB1300A03CF1 /* SharelockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28E41A86CB1300A03CF1 /* SharelockTests.swift */; };
 		5FEA28EF1A88FEA500A03CF1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA28EE1A88FEA500A03CF1 /* MainMenu.xib */; };
-		5FEA28FA1A8933CC00A03CF1 /* NewSharelockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28F81A8933CC00A03CF1 /* NewSharelockViewController.swift */; };
-		5FEA28FB1A8933CC00A03CF1 /* NewSharelockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA28F91A8933CC00A03CF1 /* NewSharelockViewController.xib */; };
+		5FEA28FA1A8933CC00A03CF1 /* SharelockMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28F81A8933CC00A03CF1 /* SharelockMainViewController.swift */; };
+		5FEA28FB1A8933CC00A03CF1 /* SharelockMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA28F91A8933CC00A03CF1 /* SharelockMainViewController.xib */; };
 		A75FE9CFC5FDF24608F9FDE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1C6B61BBAC388FF56EC3CF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +32,10 @@
 
 /* Begin PBXFileReference section */
 		43ADBE6C7FCC85D5F692D2E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5F9DC0D41A8CEA230059516B /* SharelockUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharelockUserDefaults.swift; sourceTree = "<group>"; };
 		5FC8B00B1A8A5BC300A42D87 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		5FD48F921A8BF650005E3680 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		5FD48F931A8BF650005E3680 /* SettingsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsWindowController.xib; sourceTree = "<group>"; };
 		5FEA28CC1A86CB1300A03CF1 /* Sharelock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sharelock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEA28D01A86CB1300A03CF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FEA28D11A86CB1300A03CF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,8 +45,8 @@
 		5FEA28E41A86CB1300A03CF1 /* SharelockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharelockTests.swift; sourceTree = "<group>"; };
 		5FEA28EE1A88FEA500A03CF1 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		5FEA28F01A8931C300A03CF1 /* Sharelock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sharelock-Bridging-Header.h"; sourceTree = "<group>"; };
-		5FEA28F81A8933CC00A03CF1 /* NewSharelockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSharelockViewController.swift; sourceTree = "<group>"; };
-		5FEA28F91A8933CC00A03CF1 /* NewSharelockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewSharelockViewController.xib; sourceTree = "<group>"; };
+		5FEA28F81A8933CC00A03CF1 /* SharelockMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharelockMainViewController.swift; sourceTree = "<group>"; };
+		5FEA28F91A8933CC00A03CF1 /* SharelockMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharelockMainViewController.xib; sourceTree = "<group>"; };
 		6A1C6B61BBAC388FF56EC3CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB818F429E001E218A0B5FE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,8 +115,11 @@
 				5FEA28CF1A86CB1300A03CF1 /* Supporting Files */,
 				5FEA28EE1A88FEA500A03CF1 /* MainMenu.xib */,
 				5FEA28F01A8931C300A03CF1 /* Sharelock-Bridging-Header.h */,
-				5FEA28F81A8933CC00A03CF1 /* NewSharelockViewController.swift */,
-				5FEA28F91A8933CC00A03CF1 /* NewSharelockViewController.xib */,
+				5FEA28F81A8933CC00A03CF1 /* SharelockMainViewController.swift */,
+				5FEA28F91A8933CC00A03CF1 /* SharelockMainViewController.xib */,
+				5FD48F921A8BF650005E3680 /* SettingsWindowController.swift */,
+				5FD48F931A8BF650005E3680 /* SettingsWindowController.xib */,
+				5F9DC0D41A8CEA230059516B /* SharelockUserDefaults.swift */,
 			);
 			path = Sharelock;
 			sourceTree = "<group>";
@@ -231,8 +240,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FEA28FB1A8933CC00A03CF1 /* NewSharelockViewController.xib in Resources */,
+				5FEA28FB1A8933CC00A03CF1 /* SharelockMainViewController.xib in Resources */,
 				5FEA28D61A86CB1300A03CF1 /* Images.xcassets in Resources */,
+				5FD48F951A8BF650005E3680 /* SettingsWindowController.xib in Resources */,
 				5FEA28EF1A88FEA500A03CF1 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,8 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F9DC0D51A8CEA230059516B /* SharelockUserDefaults.swift in Sources */,
 				5FC8B00C1A8A5BC300A42D87 /* Alamofire.swift in Sources */,
-				5FEA28FA1A8933CC00A03CF1 /* NewSharelockViewController.swift in Sources */,
+				5FEA28FA1A8933CC00A03CF1 /* SharelockMainViewController.swift in Sources */,
+				5FD48F941A8BF650005E3680 /* SettingsWindowController.swift in Sources */,
 				5FEA28D21A86CB1300A03CF1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
