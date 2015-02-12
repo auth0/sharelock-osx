@@ -139,8 +139,7 @@ class SharelockMainViewController: NSViewController {
                         hyperlinkString.endEditing()
                         self?.linkField.attributedStringValue = hyperlinkString
                         self?.shareButton.enabled = true
-                        self?.linkField.resignFirstResponder()
-                        self?.dataField.resignFirstResponder()
+                        self?.shareButton.window?.makeFirstResponder(self?.shareButton)
                     }
                 }
             }
