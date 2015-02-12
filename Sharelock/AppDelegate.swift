@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         image?.setTemplate(true)
         let appearance = CCNStatusItemWindowAppearance.defaultAppearance()
         appearance.backgroundColor = NSColor.blackColor()
-        appearance.presentationTransition = CCNPresentationTransition.SlideAndFade
+        appearance.presentationTransition = CCNPresentationTransition.None
         CCNStatusItem.setWindowAppearance(appearance)
         CCNStatusItem.presentStatusItemWithImage(image, contentViewController: sharelockController)
 

@@ -110,6 +110,8 @@ class SharelockMainViewController: NSViewController {
 
             let baseURL = NSUserDefaults.standardUserDefaults().sharelockURL()!
             let newURL = NSURL(string: "create", relativeToURL: baseURL)!
+
+
             let params = ["d": data, "a": sharelist]
             request(.POST, newURL, parameters: params)
             .validate(statusCode: 200..<300)

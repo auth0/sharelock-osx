@@ -27,17 +27,9 @@
                     <rect key="frame" x="0.0" y="333" width="374" height="50"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="irV-Cd-cIr">
-                            <rect key="frame" x="20" y="16" width="22" height="19"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic-title" id="tal-Kd-ij4"/>
+                            <rect key="frame" x="20" y="16" width="148" height="19"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="ic_sharelock_title" id="tal-Kd-ij4"/>
                         </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pa8-yf-V0o">
-                            <rect key="frame" x="50" y="16" width="70" height="18"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sharelock" id="sp1-ls-mIw">
-                                <font key="font" metaFont="system" size="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="YJU-gh-Uv3">
                             <rect key="frame" x="336" y="16" width="18" height="19"/>
                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="ic-settings" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="SXe-6Q-1mg">
@@ -55,9 +47,6 @@
                         <constraint firstItem="YJU-gh-Uv3" firstAttribute="top" secondItem="xfk-xr-D00" secondAttribute="top" constant="15" id="FlH-1h-qOa"/>
                         <constraint firstItem="irV-Cd-cIr" firstAttribute="leading" secondItem="xfk-xr-D00" secondAttribute="leading" constant="20" id="Rz8-Vg-yfG"/>
                         <constraint firstItem="irV-Cd-cIr" firstAttribute="top" secondItem="xfk-xr-D00" secondAttribute="top" constant="15" id="ZbC-6v-0b5"/>
-                        <constraint firstItem="Pa8-yf-V0o" firstAttribute="top" secondItem="xfk-xr-D00" secondAttribute="top" constant="16" id="hWv-5H-92K"/>
-                        <constraint firstAttribute="bottom" secondItem="Pa8-yf-V0o" secondAttribute="bottom" constant="16" id="lki-Rx-6ym"/>
-                        <constraint firstItem="Pa8-yf-V0o" firstAttribute="leading" secondItem="irV-Cd-cIr" secondAttribute="trailing" constant="10" id="mrU-XM-bmR"/>
                         <constraint firstAttribute="height" constant="50" id="raB-df-RNY"/>
                         <constraint firstAttribute="bottom" secondItem="irV-Cd-cIr" secondAttribute="bottom" constant="16" id="z2r-Uw-EUM"/>
                     </constraints>
@@ -66,7 +55,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="374" height="333"/>
                     <subviews>
                         <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Rp-xn-poy">
-                            <rect key="frame" x="145" y="243" width="209" height="18"/>
+                            <rect key="frame" x="153" y="243" width="201" height="18"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Any text up to 500 characters" drawsBackground="YES" id="Lck-bP-DUC">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -77,7 +66,7 @@
                             </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hPv-B4-DJg">
-                            <rect key="frame" x="38" y="202" width="89" height="18"/>
+                            <rect key="frame" x="46" y="202" width="89" height="18"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="who to share" id="JGm-rq-uLu">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,15 +74,15 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9NK-pa-y7L">
-                            <rect key="frame" x="18" y="161" width="109" height="18"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="sherlocked data" id="vzb-LZ-jRz">
+                            <rect key="frame" x="18" y="161" width="117" height="18"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="sharelocked data" id="vzb-LZ-jRz">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C60-xG-XUl">
-                            <rect key="frame" x="36" y="243" width="91" height="18"/>
+                            <rect key="frame" x="44" y="243" width="91" height="18"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="data to share" id="2oC-LS-ma1">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,14 +94,14 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="cgF-tp-fEk"/>
                             </constraints>
-                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore:" id="dcA-7h-Eum">
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et " id="dcA-7h-Eum">
                                 <font key="font" size="14" name="HelveticaNeue"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-Hb-vOx">
-                            <rect key="frame" x="145" y="202" width="209" height="18"/>
+                            <rect key="frame" x="153" y="202" width="201" height="18"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="E-mail, Twitter, E-mail Domain" drawsBackground="YES" id="V2S-lk-why">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -123,7 +112,7 @@
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-DG-ymb" customClass="HyperlinkTextField">
-                            <rect key="frame" x="143" y="59" width="213" height="120"/>
+                            <rect key="frame" x="151" y="59" width="205" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="c1b-u2-aX4"/>
                             </constraints>
@@ -133,7 +122,7 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a5Z-KQ-hhZ">
+                        <button toolTip="Press Enter to Save in Clipboard" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a5Z-KQ-hhZ">
                             <rect key="frame" x="210" y="13" width="150" height="32"/>
                             <buttonCell key="cell" type="push" title="Save in Clipboard" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gK2-wf-3GD">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -166,10 +155,10 @@ DQ
                             <font key="titleFont" metaFont="system"/>
                         </box>
                         <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-fc-ti8">
-                            <rect key="frame" x="157" y="162" width="16" height="16"/>
+                            <rect key="frame" x="161" y="162" width="16" height="16"/>
                         </progressIndicator>
                         <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ze2-IC-h9N">
-                            <rect key="frame" x="176" y="161" width="146" height="17"/>
+                            <rect key="frame" x="180" y="161" width="146" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Encrypting your data…" id="RlT-ZW-LnB">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -242,6 +231,6 @@ DQ
     </objects>
     <resources>
         <image name="ic-settings" width="17" height="17"/>
-        <image name="ic-title" width="22" height="19"/>
+        <image name="ic_sharelock_title" width="148" height="25"/>
     </resources>
 </document>
