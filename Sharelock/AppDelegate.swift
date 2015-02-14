@@ -22,7 +22,6 @@
 
 import Cocoa
 
-let ShowSettingsNotification = "SharelockShowSettings"
 let SharelockMainScreenSize = NSSize(width: 374, height: 400)
 
 @NSApplicationMain
@@ -30,13 +29,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
 
     @IBOutlet var menu: NSMenu!
 
-    var sharelockController: SharelockMainViewController!
-    var settingsController: SettingsWindowController!
+    var sharelockController: NSViewController!
+    var settingsController: NSWindowController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         self.registerAppDefaults()
 
-        sharelockController = SharelockMainViewController(nibName: "SharelockMainViewController", bundle: nil)
+        sharelockController = SharelockContentViewController(nibName: "SharelockContentViewController", bundle: nil)
         sharelockController.preferredContentSize = SharelockMainScreenSize
         let image = NSImage(named: "Sharelock-MenuBar")
         image?.setTemplate(true)

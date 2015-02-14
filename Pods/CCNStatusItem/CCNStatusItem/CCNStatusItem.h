@@ -56,6 +56,11 @@ typedef NS_ENUM(NSUInteger, CCNStatusItemPresentationMode) {
 @property (readonly, nonatomic) CCNStatusItemPresentationMode presentationMode;
 @property (assign, nonatomic) BOOL appearsDisabled;
 
+#pragma mark - Handling the Status Item Window
+
+- (void)showStatusItemWindow;
+- (void)dismissStatusItemWindow;
+
 
 #pragma mark - Handling StatusItem Layout
 
@@ -63,3 +68,11 @@ typedef NS_ENUM(NSUInteger, CCNStatusItemPresentationMode) {
 + (void)setWindowAppearance:(CCNStatusItemWindowAppearance *)appearance;
 
 @end
+
+
+
+// Each notification has the statusItemWindow as notification object. The userInfo dictionary is nil.
+FOUNDATION_EXPORT NSString *const CCNStatusItemWindowWillShowNotification;
+FOUNDATION_EXPORT NSString *const CCNStatusItemWindowDidShowNotification;
+FOUNDATION_EXPORT NSString *const CCNStatusItemWindowWillDismissNotification;
+FOUNDATION_EXPORT NSString *const CCNStatusItemWindowDidDismissNotification;

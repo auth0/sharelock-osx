@@ -115,9 +115,9 @@
 
 - (void)handleStatusItemButtonAction:(id)sender {
     if (self.isStatusItemWindowVisible) {
-        [self.statusItemWindowController dismissStatusItemWindow];
+        [self dismissStatusItemWindow];
     } else {
-        [self.statusItemWindowController showStatusItemWindow];
+        [self showStatusItemWindow];
     }
 }
 
@@ -136,7 +136,15 @@
     self.statusItem.button.appearsDisabled = appearsDisabled;
 }
 
-#pragma mark - Helper
+#pragma mark - Handling the Status Item Window
+
+- (void)showStatusItemWindow {
+    [self.statusItemWindowController showStatusItemWindow];
+}
+
+- (void)dismissStatusItemWindow {
+    [self.statusItemWindowController dismissStatusItemWindow];
+}
 
 #pragma mark - Handling StatusItem Layout
 

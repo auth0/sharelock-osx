@@ -32,12 +32,18 @@
 #import "CCNStatusItemWindowController.h"
 #import "CCNStatusItemWindowAppearance.h"
 
+NSString *const CCNStatusItemWindowWillShowNotification    = @"CCNStatusItemWindowWillShowNotification";
+NSString *const CCNStatusItemWindowDidShowNotification     = @"CCNStatusItemWindowDidShowNotification";
+NSString *const CCNStatusItemWindowWillDismissNotification = @"CCNStatusItemWindowWillDismissNotification";
+NSString *const CCNStatusItemWindowDidDismissNotification  = @"CCNStatusItemWindowDidDismissNotification";
 
 static const CGFloat CCNTransitionDistance = 8.0;
 typedef NS_ENUM(NSUInteger, CCNFadeDirection) {
     CCNFadeDirectionFadeIn = 0,
     CCNFadeDirectionFadeOut
 };
+
+typedef void (^CCNStatusItemWindowAnimationCompletion)(void);
 
 
 @interface CCNStatusItemWindowController () {
@@ -121,30 +127,24 @@ typedef NS_ENUM(NSUInteger, CCNFadeDirection) {
 }
 
 - (void)animateWindow:(CCNStatusItemWindow *)window withFadeTransitionUsingFadeDirection:(CCNFadeDirection)fadeDirection {
-    __weak typeof(self) wSelf = self;
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     self.animationIsRunning = YES;
+
+
+    if (fadeDirection == CCNFadeDirectionFadeIn)    [nc postNotificationName:CCNStatusItemWindowWillShowNotification object:window];
+    else                                            [nc postNotificationName:CCNStatusItemWindowWillDismissNotification object:window];
+
 
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         context.duration = self.windowAppearance.animationDuration;
         context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         [[window animator] setAlphaValue:(fadeDirection == CCNFadeDirectionFadeIn ? 1.0 : 0.0)];
 
-    } completionHandler:^{
-        wSelf.animationIsRunning = NO;
-        wSelf.windowIsOpen = (fadeDirection == CCNFadeDirectionFadeIn);
-
-        if (fadeDirection == CCNFadeDirectionFadeIn) {
-            [window makeKeyAndOrderFront:nil];
-        }
-        else {
-            [window orderOut:wSelf];
-            [window close];
-        }
-    }];
+    } completionHandler:[self animationCompletionForWindow:window fadeDirection:fadeDirection]];
 }
 
 - (void)animateWindow:(CCNStatusItemWindow *)window withSlideAndFadeTransitionUsingFadeDirection:(CCNFadeDirection)fadeDirection {
-    __weak typeof(self) wSelf = self;
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     self.animationIsRunning = YES;
 
     CGRect windowStartFrame, windowEndFrame;
@@ -160,8 +160,13 @@ typedef NS_ENUM(NSUInteger, CCNFadeDirection) {
             break;
         }
     }
-
     [window setFrame:windowStartFrame display:NO];
+
+
+    if (fadeDirection == CCNFadeDirectionFadeIn)    [nc postNotificationName:CCNStatusItemWindowWillShowNotification object:window];
+    else                                            [nc postNotificationName:CCNStatusItemWindowWillDismissNotification object:window];
+
+//    [window setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantDark]];
 
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         context.duration = self.windowAppearance.animationDuration;
@@ -169,18 +174,27 @@ typedef NS_ENUM(NSUInteger, CCNFadeDirection) {
         [[window animator] setFrame:windowEndFrame display:NO];
         [[window animator] setAlphaValue:(fadeDirection == CCNFadeDirectionFadeIn ? 1.0 : 0.0)];
 
-    } completionHandler:^{
+    } completionHandler:[self animationCompletionForWindow:window fadeDirection:fadeDirection]];
+}
+
+- (CCNStatusItemWindowAnimationCompletion)animationCompletionForWindow:(CCNStatusItemWindow *)window fadeDirection:(CCNFadeDirection)fadeDirection {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    __weak typeof(self) wSelf = self;
+
+    return ^{
         wSelf.animationIsRunning = NO;
         wSelf.windowIsOpen = (fadeDirection == CCNFadeDirectionFadeIn);
 
         if (fadeDirection == CCNFadeDirectionFadeIn) {
             [window makeKeyAndOrderFront:nil];
+            [nc postNotificationName:CCNStatusItemWindowDidShowNotification object:window];
         }
         else {
             [window orderOut:wSelf];
             [window close];
+            [nc postNotificationName:CCNStatusItemWindowDidDismissNotification object:window];
         }
-    }];
+    };
 }
 
 #pragma mark - Notifications
