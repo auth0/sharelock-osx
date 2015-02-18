@@ -61,6 +61,8 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 @property (weak, nonatomic) IBOutlet NSTextField *dataField;
 @property (weak, nonatomic) IBOutlet NSView *fieldContainerView;
 @property (weak, nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
+@property (weak, nonatomic) IBOutlet NSView *errorMessageContainer;
+@property (weak, nonatomic) IBOutlet NSTextField *errorMessageLabel;
 
 @property (strong, nonatomic) RACCommand *command;
 @property (strong, nonatomic) Secret *secret;
@@ -147,6 +149,21 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     }] map:^id(NSNumber *value) {
         return value.integerValue >= 0 ? [NSColor blackColor] : [NSColor redColor];
     }];
+    RACSignal *throttledValidSecret = [RACSignal combineLatest:@[throttledValidData, throttledValidACL]];
+    RAC(self.errorMessageContainer, hidden) = [throttledValidSecret and];
+    RAC(self.errorMessageLabel, stringValue) = [throttledValidSecret reduceEach:^id(id validData, id validACL){
+        if (![validACL boolValue] && ![validData boolValue]) {
+            return NSLocalizedString(@"Please enter a text to share and a list of E-Mail, twitter handle or E-Mail domain names", @"Invalid data & share list message");
+        }
+        if (![validData boolValue]) {
+            return NSLocalizedString(@"Please enter a text to share up to 500 characters", @"Invalid data message");
+        }
+        if (![validACL boolValue]) {
+            return NSLocalizedString(@"Please enter a valid list of E-Mail, twitter handle or E-Mail domain names", @"Invalid share list message");
+        }
+
+        return @"";
+    }];
 }
 
 - (void)viewDidAppear {
@@ -163,13 +180,17 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
 - (IBAction)showMenu:(NSButton *)button {
     NSRect frame = button.frame;
-    NSPoint menuOrigin = [button.superview convertPoint:NSMakePoint(frame.origin.x, frame.origin.y - 10) fromView:nil];
+    NSPoint menuOrigin = [button.superview convertPoint:NSMakePoint(frame.origin.x, frame.origin.y - 10) toView:nil];
     NSEvent *event = [NSEvent mouseEventWithType:NSLeftMouseDown location:menuOrigin modifierFlags:0 timestamp:0 windowNumber:button.window.windowNumber context:button.window.graphicsContext eventNumber:0 clickCount:1 pressure:1];
     [NSMenu popUpContextMenu:self.settingsMenu withEvent:event forView:button];
 }
 
 - (IBAction)shareLink:(id)sender {
     [self.command execute:self.secret];
+}
+
+- (IBAction)goToAuth0Site:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://auth0.com"]];
 }
 
 @end

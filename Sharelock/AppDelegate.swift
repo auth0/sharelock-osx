@@ -22,7 +22,7 @@
 
 import Cocoa
 
-let SharelockMainScreenSize = NSSize(width: 374, height: 313)
+let SharelockMainScreenSize = NSSize(width: 374, height: 315)
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotificationCenterDelegate {
@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
 
         sharelockController = SharelockContentViewController(nibName: "SharelockContentViewController", bundle: nil)
         sharelockController.preferredContentSize = SharelockMainScreenSize
-        let image = NSImage(named: "Sharelock-MenuBar")
+        let image = NSImage(named: "icon_sharelock_menu_bar")
         image?.setTemplate(true)
         let appearance = CCNStatusItemWindowAppearance.defaultAppearance()
         appearance.backgroundColor = NSColor.blackColor()
