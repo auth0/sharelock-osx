@@ -32,9 +32,9 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 @interface SharelockContentViewController ()
 
 @property (strong, nonatomic) IBOutlet NSMenu *settingsMenu;
+@property (weak, nonatomic) IBOutlet NSTextField *dataCharCountLabel;
 @property (weak, nonatomic) IBOutlet NSTextField *encryptMessage;
 @property (weak, nonatomic) IBOutlet NSButton *shareButton;
-@property (weak, nonatomic) IBOutlet HyperlinkTextField *linkField;
 @property (weak, nonatomic) IBOutlet NSTextField *shareField;
 @property (weak, nonatomic) IBOutlet NSTextField *dataField;
 @property (weak, nonatomic) IBOutlet NSView *fieldContainerView;
@@ -124,6 +124,15 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
         } else {
             [self.progressIndicator stopAnimation:self];
         }
+    }];
+    RACSignal *dataCharCount = [RACObserve(self.secret, data) map:^id(NSString *value) {
+        return @(500 - (NSInteger)value.length);
+    }];
+    RAC(self.dataCharCountLabel, stringValue) = dataCharCount;
+    RAC(self.dataCharCountLabel, textColor) = [[[dataCharCount skip:1] throttle:.5f valuesPassingTest:^BOOL(NSNumber *value) {
+        return [value integerValue] < 0;
+    }] map:^id(NSNumber *value) {
+        return value.integerValue >= 0 ? [NSColor blackColor] : [NSColor redColor];
     }];
 }
 
