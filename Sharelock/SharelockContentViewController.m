@@ -29,6 +29,28 @@
 
 NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
+@interface SharelockAPI (Reactive)
+- (RACSignal *)linkForSecret:(Secret *)secret;
+@end
+
+@implementation SharelockAPI (Reactive)
+
+- (RACSignal *)linkForSecret:(Secret *)secret {
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self linkForSecret:secret callback:^(Secret *secret, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            } else {
+                [subscriber sendNext:secret];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }] delay:2];
+}
+
+@end
+
 @interface SharelockContentViewController ()
 
 @property (strong, nonatomic) IBOutlet NSMenu *settingsMenu;
@@ -52,9 +74,10 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     self.secret = [[Secret alloc] init];
     self.fieldContainerView.wantsLayer = YES;
     self.fieldContainerView.layer.backgroundColor = [[NSColor whiteColor] CGColor];
+    self.shareField.toolTip = NSLocalizedString(@"Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)", @"Share Field Tooltip");
+    self.dataField.toolTip = NSLocalizedString(@"Passwords, keys, URLs, any text up to 500 characters.", @"Data Field Tooltip");
 
     @weakify(self);
-
     RAC(self.secret, data) = self.dataField.rac_textSignal;
     RAC(self.secret, aclString) = self.shareField.rac_textSignal;
     RACSignal *validData = [RACObserve(self.secret, data) map:^id(id value) {
@@ -68,18 +91,8 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
     self.command = [[RACCommand alloc] initWithEnabled:validSecret
                                            signalBlock:^RACSignal *(Secret *secret) {
-                                               return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                                   SharelockAPI *api = [[SharelockAPI alloc] initWithBaseURL:[[NSUserDefaults standardUserDefaults] sharelockURL]];
-                                                   [api linkForSecret:secret callback:^(Secret *secret, NSError *error) {
-                                                       if (error) {
-                                                           [subscriber sendError:error];
-                                                       } else {
-                                                           [subscriber sendNext:secret];
-                                                           [subscriber sendCompleted];
-                                                       }
-                                                   }];
-                                                   return nil;
-                                               }];
+                                               SharelockAPI *api = [[SharelockAPI alloc] initWithBaseURL:[[NSUserDefaults standardUserDefaults] sharelockURL]];
+                                               return [api linkForSecret:secret];
                                            }];
     self.command.allowsConcurrentExecution = NO;
     [self.command.errors subscribeNext:^(NSError *error) {
@@ -115,7 +128,7 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
         return [value boolValue] ? [NSColor blackColor] : [NSColor redColor];
     }];
 
-    RAC(self.shareButton, enabled) = validSecret;
+    RAC(self.shareButton, enabled) = [[RACSignal combineLatest:@[validSecret, [self.command.executing not]]] and];
     RAC(self.encryptMessage, hidden) = [self.command.executing not];
     [self.command.executing subscribeNext:^(id executing) {
         @strongify(self);
@@ -138,8 +151,6 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
 - (void)viewDidAppear {
     [self.dataField becomeFirstResponder];
-    self.shareField.toolTip = NSLocalizedString(@"Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)", @"Share Field Tooltip");
-    self.dataField.toolTip = NSLocalizedString(@"Passwords, keys, URLs, any text up to 500 characters.", @"Data Field Tooltip");
 }
 
 - (IBAction)showSettings:(id)sender {
@@ -161,5 +172,5 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     [self.command execute:self.secret];
 }
 
-
 @end
+
