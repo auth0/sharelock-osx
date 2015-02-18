@@ -29,27 +29,31 @@ import Cocoa
     var link: NSURL?
     var acl: [String] {
         get {
-            if let list = self.aclString {
-                return split(
-                    list, {$0 == ","},
-                    maxSplit: Int.max,
-                    allowEmptySlices: false
-                    ).map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
-            } else {
-                return [];
-            }
+            return Secret.asACL(self.aclString)
         }
     }
 
-    func hasValidData() -> Bool {
-        if let data = self.data {
-            return (1...500).contains(countElements(data))
+    class func hasValidData(data: String?) -> Bool {
+        if data != nil {
+            return (1...500).contains(countElements(data!))
         }
         return false
     }
 
-    func hasValidACL() -> Bool {
-        let list = self.acl
+    class func asACL(string: String?) -> [String] {
+        if let list = string {
+            return split(
+                list, {$0 == ","},
+                maxSplit: Int.max,
+                allowEmptySlices: false
+                ).map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
+        } else {
+            return [];
+        }
+    }
+
+    class func hasValidACL(acl: [String]) -> Bool {
+        let list = acl
         if (countElements(list) == 0) {
             return false
         }

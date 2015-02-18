@@ -24,6 +24,8 @@
 #import "HyperlinkTextField.h"
 #import "CCNStatusItem.h"
 #import "Sharelock-Swift.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
 
 NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
@@ -38,30 +40,97 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 @property (weak, nonatomic) IBOutlet NSView *fieldContainerView;
 @property (weak, nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
 
+@property (strong, nonatomic) RACCommand *command;
+@property (strong, nonatomic) Secret *secret;
+
 @end
 
 @implementation SharelockContentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.secret = [[Secret alloc] init];
     self.fieldContainerView.wantsLayer = YES;
     self.fieldContainerView.layer.backgroundColor = [[NSColor whiteColor] CGColor];
+
+    @weakify(self);
+
+    RAC(self.secret, data) = self.dataField.rac_textSignal;
+    RAC(self.secret, aclString) = self.shareField.rac_textSignal;
+    RACSignal *validData = [RACObserve(self.secret, data) map:^id(id value) {
+        return @([Secret hasValidData:value]);
+    }];
+    RACSignal *validACL = [RACObserve(self.secret, aclString) map:^id(id value) {
+        NSArray *acl = [Secret asACL:value];
+        return @([Secret hasValidACL:acl]);
+    }];
+    RACSignal *validSecret = [[RACSignal combineLatest:@[validData, validACL]] and];
+
+    self.command = [[RACCommand alloc] initWithEnabled:validSecret
+                                           signalBlock:^RACSignal *(Secret *secret) {
+                                               return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                                   SharelockAPI *api = [[SharelockAPI alloc] initWithBaseURL:[[NSUserDefaults standardUserDefaults] sharelockURL]];
+                                                   [api linkForSecret:secret callback:^(Secret *secret, NSError *error) {
+                                                       if (error) {
+                                                           [subscriber sendError:error];
+                                                       } else {
+                                                           [subscriber sendNext:secret];
+                                                           [subscriber sendCompleted];
+                                                       }
+                                                   }];
+                                                   return nil;
+                                               }];
+                                           }];
+    self.command.allowsConcurrentExecution = NO;
+    [self.command.errors subscribeNext:^(NSError *error) {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = error.localizedDescription;
+        notification.informativeText = error.localizedFailureReason;
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }];
+    [[self.command.executionSignals flatten] subscribeNext:^(Secret *secret) {
+        @strongify(self);
+        NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+        [pasteboard clearContents];
+        [pasteboard writeObjects:@[secret.link.absoluteString]];
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = NSLocalizedString(@"Ready to share", @"Link in Clipboard Title");
+        notification.informativeText = NSLocalizedString(@"Your secured link is in your Clipboard", @"Link in Clipboard Message");
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        [[[[CCNStatusItem sharedInstance] statusItem] button] performClick:self];
+    }];
+    RACSignal *throttledValidData = [[validData skip:1] throttle:.5f valuesPassingTest:^BOOL(id next) {
+        return ![next boolValue];
+    }];
+    RACSignal *throttledValidACL = [[validACL skip:1] throttle:.5f valuesPassingTest:^BOOL(NSNumber *value) {
+        return ![value boolValue];
+    }];
+
+    RAC(self.dataField, textColor) = [throttledValidData map:^id(id value) {
+        return [value boolValue] ? [NSColor blackColor] : [NSColor redColor];
+    }];
+    RAC(self.shareField, textColor) = [throttledValidACL map:^id(id value) {
+        return [value boolValue] ? [NSColor blackColor] : [NSColor redColor];
+    }];
+
+    RAC(self.shareButton, enabled) = validSecret;
+    RAC(self.encryptMessage, hidden) = [self.command.executing not];
+    [self.command.executing subscribeNext:^(id executing) {
+        @strongify(self);
+        if ([executing boolValue]) {
+            [self.progressIndicator startAnimation:self];
+        } else {
+            [self.progressIndicator stopAnimation:self];
+        }
+    }];
 }
 
 - (void)viewDidAppear {
-    self.dataField.stringValue = @"";
-    self.shareField.stringValue = @"";
-    self.linkField.stringValue = @"";
-    self.shareButton.enabled = NO;
+    [self.dataField becomeFirstResponder];
     self.shareField.toolTip = NSLocalizedString(@"Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)", @"Share Field Tooltip");
     self.dataField.toolTip = NSLocalizedString(@"Passwords, keys, URLs, any text up to 500 characters.", @"Data Field Tooltip");
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(finishedEditing:) name:NSControlTextDidEndEditingNotification object:nil];
-    [notificationCenter addObserver:self selector:@selector(textChanged:) name:NSControlTextDidChangeNotification object:nil];
-}
-
-- (void)viewDidDisappear {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)showSettings:(id)sender {
@@ -80,72 +149,8 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 }
 
 - (IBAction)shareLink:(id)sender {
-    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-    [pasteboard clearContents];
-    [pasteboard writeObjects:@[self.linkField.stringValue]];
-    [[[[CCNStatusItem sharedInstance] statusItem] button] performClick:self];
-    NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = NSLocalizedString(@"Ready to share", @"Link in Clipboard Title");
-    notification.informativeText = NSLocalizedString(@"Your secured link is in your Clipboard", @"Link in Clipboard Message");
-    notification.soundName = NSUserNotificationDefaultSoundName;
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    [self.command execute:self.secret];
 }
 
-- (void)textChanged:(NSNotification *)notification {
-    self.linkField.stringValue = @"";
-    self.shareButton.enabled = NO;
-}
-
-- (void)finishedEditing:(NSNotification *)notification {
-    if (self.linkField.stringValue.length > 0) {
-        return;
-    }
-
-    self.shareButton.enabled = NO;
-    Secret *secret = [[Secret alloc] init];
-    secret.data = self.dataField.stringValue;
-    secret.aclString = self.shareField.stringValue;
-    BOOL aclValid = [secret hasValidACL];
-    BOOL dataValid = [secret hasValidData];
-    self.dataField.textColor = dataValid || secret.data.length == 0 ? [NSColor blackColor] : [NSColor redColor];
-    self.shareField.textColor = aclValid || secret.acl.count == 0 ? [NSColor blackColor] : [NSColor redColor];
-
-    if (dataValid && aclValid) {
-        [self showProgress:YES];
-        SharelockAPI *api = [[SharelockAPI alloc] initWithBaseURL:[[NSUserDefaults standardUserDefaults] sharelockURL]];
-        [api linkForSecret:secret callback:^(Secret *secret, NSError *error) {
-            [self showProgress:NO];
-            if (error) {
-                NSUserNotification *notification = [[NSUserNotification alloc] init];
-                notification.title = error.localizedDescription;
-                notification.informativeText = error.localizedFailureReason;
-                notification.soundName = NSUserNotificationDefaultSoundName;
-                [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-            } else {
-                NSMutableAttributedString *linkString = [[NSMutableAttributedString alloc] initWithString:secret.link.absoluteString];
-                [linkString beginEditing];
-                [linkString addAttribute:NSLinkAttributeName value:secret.link range:NSMakeRange(0, linkString.length)];
-                [linkString addAttribute:NSForegroundColorAttributeName value:[NSColor colorWithCalibratedRed:0.290196078 green:0.564705882 blue:0.88627451 alpha:1.0] range:NSMakeRange(0, linkString.length)];
-                [linkString endEditing];
-                self.linkField.attributedStringValue = linkString;
-                self.shareButton.enabled = YES;
-                [self.shareButton.window makeFirstResponder:self.shareButton];
-            }
-        }];
-    }
-}
-
-- (void)showProgress:(BOOL)inProgress {
-    if (inProgress) {
-        self.linkField.stringValue = @"";
-        [self.progressIndicator startAnimation:self];
-        self.linkField.hidden = YES;
-        self.encryptMessage.hidden = NO;
-    } else {
-        [self.progressIndicator stopAnimation:self];
-        self.linkField.hidden = NO;
-        self.encryptMessage.hidden = YES;
-    }
-}
 
 @end
