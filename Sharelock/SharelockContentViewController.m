@@ -166,8 +166,17 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     }];
 }
 
-- (void)viewDidAppear {
-    [self.dataField becomeFirstResponder];
+- (void)viewWillAppear {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSString *content = [pasteboard stringForType:NSPasteboardTypeString];
+    if (content) {
+        self.dataField.stringValue = content;
+        self.secret.data = content;
+        [self.shareField becomeFirstResponder];
+        [pasteboard clearContents];
+    } else {
+        [self.dataField becomeFirstResponder];
+    }
 }
 
 - (IBAction)showSettings:(id)sender {
