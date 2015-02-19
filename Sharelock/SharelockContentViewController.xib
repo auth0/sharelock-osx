@@ -42,6 +42,19 @@
                                 <action selector="showMenu:" target="-2" id="lgS-Om-e5H"/>
                             </connections>
                         </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qR1-9X-4P8">
+                            <rect key="frame" x="-100" y="13" width="70" height="21"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyDown" inset="2" id="TUg-d8-Dqn">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                            </buttonCell>
+                            <connections>
+                                <action selector="closeWindow:" target="-2" id="9La-vh-joX"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="YJU-gh-Uv3" secondAttribute="bottom" constant="16" id="1D2-X7-UxP"/>

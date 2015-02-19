@@ -21,7 +21,6 @@
 // THE SOFTWARE.
 
 #import "SharelockContentViewController.h"
-#import "HyperlinkTextField.h"
 #import "CCNStatusItem.h"
 #import "Sharelock-Swift.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -114,7 +113,7 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
         notification.informativeText = NSLocalizedString(@"Your secured link is in your Clipboard", @"Link in Clipboard Message");
         notification.soundName = NSUserNotificationDefaultSoundName;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-        [[[[CCNStatusItem sharedInstance] statusItem] button] performClick:self];
+        [self closeWindow:nil];
     }];
     RACSignal *throttledValidData = [[validData skip:1] throttle:.5f valuesPassingTest:^BOOL(id next) {
         return ![next boolValue];
@@ -200,6 +199,10 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
 - (IBAction)goToAuth0Site:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://auth0.com"]];
+}
+
+- (IBAction)closeWindow:(id)sender {
+    [[[[CCNStatusItem sharedInstance] statusItem] button] performClick:self];
 }
 
 @end
