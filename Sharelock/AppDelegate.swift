@@ -22,7 +22,7 @@
 
 import Cocoa
 
-let SharelockMainScreenSize = NSSize(width: 374, height: 242)
+let SharelockMainScreenSize = NSSize(width: 374, height: 258)
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotificationCenterDelegate {

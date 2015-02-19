@@ -147,7 +147,7 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     RAC(self.dataCharCountLabel, textColor) = [[[dataCharCount skip:1] throttle:.5f valuesPassingTest:^BOOL(NSNumber *value) {
         return [value integerValue] < 0;
     }] map:^id(NSNumber *value) {
-        return value.integerValue >= 0 ? [NSColor blackColor] : [NSColor redColor];
+        return value.integerValue >= 0 ? [NSColor colorWithCalibratedWhite:0.600 alpha:1.000] : [NSColor redColor];
     }];
     RACSignal *throttledValidSecret = [RACSignal combineLatest:@[throttledValidData, throttledValidACL]];
     RAC(self.errorMessageContainer, hidden) = [throttledValidSecret and];
