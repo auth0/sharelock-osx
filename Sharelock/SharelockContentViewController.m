@@ -25,6 +25,7 @@
 #import "Sharelock-Swift.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
+#import <Sparkle/Sparkle.h>
 
 NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
@@ -191,6 +192,10 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     NSPoint menuOrigin = [button.superview convertPoint:NSMakePoint(frame.origin.x, frame.origin.y - 10) toView:nil];
     NSEvent *event = [NSEvent mouseEventWithType:NSLeftMouseDown location:menuOrigin modifierFlags:0 timestamp:0 windowNumber:button.window.windowNumber context:button.window.graphicsContext eventNumber:0 clickCount:1 pressure:1];
     [NSMenu popUpContextMenu:self.settingsMenu withEvent:event forView:button];
+}
+
+- (IBAction)forceUpdate:(id)sender {
+    [[SUUpdater sharedUpdater] checkForUpdates:sender];
 }
 
 - (IBAction)shareLink:(id)sender {

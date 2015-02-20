@@ -26,6 +26,7 @@ class SettingsWindowController: NSWindowController {
 
     @IBOutlet weak var sharelockEndpointField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
+    @IBOutlet weak var sharelockVersion: NSTextField!
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -33,6 +34,10 @@ class SettingsWindowController: NSWindowController {
         if let url = defaults.sharelockURL() {
             self.sharelockEndpointField.stringValue = url.absoluteString!
         }
+        let bundleInfo = NSBundle.mainBundle().infoDictionary!
+        let marketingVersion = bundleInfo["CFBundleShortVersionString"] as String
+        let buildNumber = bundleInfo["CFBundleVersion"] as String
+        self.sharelockVersion.stringValue = "v\(marketingVersion) (\(buildNumber))"
     }
     
     @IBAction func applyChanges(sender: AnyObject) {

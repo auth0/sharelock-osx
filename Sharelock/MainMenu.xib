@@ -251,5 +251,6 @@
                 <outlet property="delegate" destination="vzb-Ok-Myg" id="Yfm-hz-EPm"/>
             </connections>
         </menu>
+        <customObject id="r2C-76-KeF" customClass="SUUpdater"/>
     </objects>
 </document>

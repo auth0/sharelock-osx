@@ -255,6 +255,14 @@ DQ
                         <action selector="showSettings:" target="-2" id="Kov-d6-l2v"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="p5S-qj-EOD"/>
+                <menuItem title="Check for Updates" indentationLevel="1" id="hQF-y0-XQq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="forceUpdate:" target="-2" id="LwZ-vr-PpY"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="jBx-vP-qBb"/>
                 <menuItem title="Quit" indentationLevel="1" id="l4n-gF-RJH">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

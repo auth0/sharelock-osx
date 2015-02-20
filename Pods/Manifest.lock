@@ -8,15 +8,18 @@ PODS:
   - ReactiveCocoa/no-arc (2.4.4)
   - ReactiveCocoa/UI (2.4.4):
     - ReactiveCocoa/Core
+  - Sparkle (1.9.0)
 
 DEPENDENCIES:
   - CCNStatusItem
   - MASShortcut
   - ReactiveCocoa (~> 2.4.4)
+  - Sparkle (~> 1.9.0)
 
 SPEC CHECKSUMS:
   CCNStatusItem: ce4a9e8479afe1a2f4caa8f5931c3dcbfcf70e13
   MASShortcut: 8878f7e0a218d52237c58d8a58e3f1cab49e3135
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
+  Sparkle: be4244aef7860f8d2abdc9c4e4d8e9629d27feb6
 
 COCOAPODS: 0.35.0

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Sharelock Mac App Changelog</title>
+    <link>http://localhost:5555/updates.xml</link>
+    <description>Most recent changes with links to updates.</description>
+    <language>en</language>
+      <item>
+        <title>Version 1.0.0 Build 3</title>
+        <description>
+          <![CDATA[
+            <p>Second version of Sharelock!</p>
+          ]]>
+        </description>
+        <pubDate>Fri, 20 Feb 2015 15:18:11 -0300</pubDate>
+        <enclosure url="http://localhost:5555/Versions/Sharelock-1.0.0-2.dmg" sparkle:version="3" sparkle:shortVersionString="1.0.0" length="3715808" type="application/x-apple-diskimage" />
+      </item>
+  </channel>
+</rss>

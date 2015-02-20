@@ -42,3 +42,9 @@
 #define COCOAPODS_VERSION_MINOR_ReactiveCocoa_no_arc 4
 #define COCOAPODS_VERSION_PATCH_ReactiveCocoa_no_arc 4
 
+// Sparkle
+#define COCOAPODS_POD_AVAILABLE_Sparkle
+#define COCOAPODS_VERSION_MAJOR_Sparkle 1
+#define COCOAPODS_VERSION_MINOR_Sparkle 9
+#define COCOAPODS_VERSION_PATCH_Sparkle 0
+

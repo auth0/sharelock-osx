@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="Sharelock" customModuleProvider="target">
             <connections>
                 <outlet property="sharelockEndpointField" destination="tK2-8s-GEu" id="ifD-HX-ZYm"/>
+                <outlet property="sharelockVersion" destination="dCq-W1-BaJ" id="upw-C9-ljy"/>
                 <outlet property="shortcutView" destination="sGW-lf-WD1" id="rIb-lq-Vqd"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -16,20 +17,20 @@
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="474" height="161"/>
+            <rect key="contentRect" x="196" y="240" width="474" height="213"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="474" height="161"/>
+                <rect key="frame" x="0.0" y="0.0" width="474" height="213"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sGW-lf-WD1" customClass="MASShortcutView">
-                        <rect key="frame" x="170" y="75" width="284" height="19"/>
+                        <rect key="frame" x="178" y="127" width="276" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="1d1-Tg-loq"/>
                         </constraints>
                     </customView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AN7-Nj-wyC">
-                        <rect key="frame" x="78" y="77" width="61" height="17"/>
+                        <rect key="frame" x="86" y="129" width="61" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Shortcut:" id="8rW-fv-lG5">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -37,15 +38,15 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jU0-U1-lDV">
-                        <rect key="frame" x="18" y="113" width="121" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sharelock Endoint:" id="rXi-6a-eWh">
+                        <rect key="frame" x="18" y="165" width="129" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sharelock Endpoint:" id="rXi-6a-eWh">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tK2-8s-GEu">
-                        <rect key="frame" x="170" y="111" width="284" height="22"/>
+                        <rect key="frame" x="178" y="163" width="276" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Z8A-fp-2wm">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -88,9 +89,26 @@ Gw
                             <action selector="restoreDefaults:" target="-2" id="XWb-Pb-xy9"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hsi-Gn-wFl">
+                        <rect key="frame" x="93" y="93" width="54" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version:" id="j22-jz-LyS">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dCq-W1-BaJ">
+                        <rect key="frame" x="178" y="93" width="38" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="FC7-hV-fZB">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="sGW-lf-WD1" secondAttribute="trailing" constant="20" id="31q-Ye-jiV"/>
+                    <constraint firstItem="dCq-W1-BaJ" firstAttribute="leading" secondItem="hsi-Gn-wFl" secondAttribute="trailing" constant="35" id="5fD-Up-d1n"/>
                     <constraint firstItem="jU0-U1-lDV" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="9TB-RE-TR6"/>
                     <constraint firstItem="sGW-lf-WD1" firstAttribute="top" secondItem="tK2-8s-GEu" secondAttribute="bottom" constant="17" id="Gnj-zS-xD8"/>
                     <constraint firstAttribute="bottom" secondItem="TM3-4y-CWz" secondAttribute="bottom" constant="20" id="HfX-gy-h4E"/>
@@ -102,9 +120,12 @@ Gw
                     <constraint firstItem="TM3-4y-CWz" firstAttribute="width" secondItem="3Zd-4m-6n4" secondAttribute="width" id="aNe-dW-2Z0"/>
                     <constraint firstItem="V7a-om-FiA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="atA-Dd-aIS"/>
                     <constraint firstAttribute="trailing" secondItem="3Zd-4m-6n4" secondAttribute="trailing" constant="20" id="bdJ-jR-2qT"/>
+                    <constraint firstItem="hsi-Gn-wFl" firstAttribute="top" secondItem="AN7-Nj-wyC" secondAttribute="bottom" constant="19" id="cjA-Od-8gG"/>
                     <constraint firstItem="AN7-Nj-wyC" firstAttribute="trailing" secondItem="jU0-U1-lDV" secondAttribute="trailing" id="dLc-jS-hyc"/>
+                    <constraint firstItem="AN7-Nj-wyC" firstAttribute="trailing" secondItem="hsi-Gn-wFl" secondAttribute="trailing" id="ebs-L7-98x"/>
                     <constraint firstItem="sGW-lf-WD1" firstAttribute="leading" secondItem="AN7-Nj-wyC" secondAttribute="trailing" constant="33" id="exQ-Dt-YpS"/>
                     <constraint firstAttribute="trailing" secondItem="tK2-8s-GEu" secondAttribute="trailing" constant="20" id="fQh-If-mgA"/>
+                    <constraint firstItem="dCq-W1-BaJ" firstAttribute="top" secondItem="sGW-lf-WD1" secondAttribute="bottom" constant="17" id="haO-8P-tiR"/>
                     <constraint firstItem="3Zd-4m-6n4" firstAttribute="leading" secondItem="TM3-4y-CWz" secondAttribute="trailing" constant="20" id="iuu-Vp-57G"/>
                     <constraint firstItem="AN7-Nj-wyC" firstAttribute="top" secondItem="jU0-U1-lDV" secondAttribute="bottom" constant="19" id="n02-tt-mPq"/>
                 </constraints>
@@ -112,7 +133,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-33" y="360.5"/>
+            <point key="canvasLocation" x="-33" y="386.5"/>
         </window>
     </objects>
 </document>
