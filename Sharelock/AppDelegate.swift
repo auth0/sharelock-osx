@@ -65,6 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
 
     func showSettings() {
         self.settingsController = SettingsWindowController(windowNibName: "SettingsWindowController")
+        self.settingsController.window?.center()
         self.settingsController.showWindow(self)
         NSApp.activateIgnoringOtherApps(true)
     }
