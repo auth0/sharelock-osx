@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="Sharelock" customModuleProvider="target">
             <connections>
+                <outlet property="launchAtLogin" destination="TOe-G1-Kax" id="SZ9-JT-abS"/>
                 <outlet property="sharelockEndpointField" destination="tK2-8s-GEu" id="ifD-HX-ZYm"/>
                 <outlet property="sharelockVersion" destination="dCq-W1-BaJ" id="upw-C9-ljy"/>
                 <outlet property="shortcutView" destination="sGW-lf-WD1" id="rIb-lq-Vqd"/>
@@ -105,11 +106,20 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="TOe-G1-Kax">
+                        <rect key="frame" x="178" y="57" width="121" height="18"/>
+                        <buttonCell key="cell" type="check" title="Launch at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="amE-uL-WM9">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="sGW-lf-WD1" secondAttribute="trailing" constant="20" id="31q-Ye-jiV"/>
                     <constraint firstItem="dCq-W1-BaJ" firstAttribute="leading" secondItem="hsi-Gn-wFl" secondAttribute="trailing" constant="35" id="5fD-Up-d1n"/>
                     <constraint firstItem="jU0-U1-lDV" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="9TB-RE-TR6"/>
+                    <constraint firstItem="dCq-W1-BaJ" firstAttribute="leading" secondItem="TOe-G1-Kax" secondAttribute="leading" id="B27-y2-rC3"/>
+                    <constraint firstItem="TOe-G1-Kax" firstAttribute="top" secondItem="dCq-W1-BaJ" secondAttribute="bottom" constant="20" id="Cwv-jv-HDL"/>
                     <constraint firstItem="sGW-lf-WD1" firstAttribute="top" secondItem="tK2-8s-GEu" secondAttribute="bottom" constant="17" id="Gnj-zS-xD8"/>
                     <constraint firstAttribute="bottom" secondItem="TM3-4y-CWz" secondAttribute="bottom" constant="20" id="HfX-gy-h4E"/>
                     <constraint firstAttribute="bottom" secondItem="3Zd-4m-6n4" secondAttribute="bottom" constant="20" id="Lin-jA-BRP"/>
@@ -133,7 +143,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-33" y="386.5"/>
+            <point key="canvasLocation" x="11" y="-129.5"/>
         </window>
     </objects>
 </document>

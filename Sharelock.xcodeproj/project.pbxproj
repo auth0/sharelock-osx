@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F38CB0F1A9BE5AF0098701B /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F38CB0D1A9BE5AF0098701B /* LaunchAtLoginController.m */; };
 		5F700BA71A8EAC6E00613467 /* SharelockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F700BA61A8EAC6E00613467 /* SharelockAPI.swift */; };
 		5F700BA91A8EAD6400613467 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F700BA81A8EAD6400613467 /* Secret.swift */; };
 		5F700BAC1A8EB1C700613467 /* SharelockContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F700BAB1A8EB1C700613467 /* SharelockContentViewController.m */; };
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		43ADBE6C7FCC85D5F692D2E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5F38CB0D1A9BE5AF0098701B /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		5F38CB0E1A9BE5AF0098701B /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		5F700BA61A8EAC6E00613467 /* SharelockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharelockAPI.swift; sourceTree = "<group>"; };
 		5F700BA81A8EAD6400613467 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		5F700BAA1A8EB1C700613467 /* SharelockContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharelockContentViewController.h; sourceTree = "<group>"; };
@@ -83,6 +86,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5F5900331A9BE2F800D27BD2 /* LaunchAtLoginController */ = {
+			isa = PBXGroup;
+			children = (
+				5F38CB0D1A9BE5AF0098701B /* LaunchAtLoginController.m */,
+				5F38CB0E1A9BE5AF0098701B /* LaunchAtLoginController.h */,
+			);
+			name = LaunchAtLoginController;
+			sourceTree = "<group>";
+		};
 		5FC8B00E1A8A86F400A42D87 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +126,7 @@
 		5FEA28CE1A86CB1300A03CF1 /* Sharelock */ = {
 			isa = PBXGroup;
 			children = (
+				5F5900331A9BE2F800D27BD2 /* LaunchAtLoginController */,
 				5FC8B00E1A8A86F400A42D87 /* Alamofire */,
 				5FEA28D11A86CB1300A03CF1 /* AppDelegate.swift */,
 				5FEA28D51A86CB1300A03CF1 /* Images.xcassets */,
@@ -304,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F9DC0D51A8CEA230059516B /* SharelockUserDefaults.swift in Sources */,
+				5F38CB0F1A9BE5AF0098701B /* LaunchAtLoginController.m in Sources */,
 				5FC8B00C1A8A5BC300A42D87 /* Alamofire.swift in Sources */,
 				5F700BA71A8EAC6E00613467 /* SharelockAPI.swift in Sources */,
 				5F700BA91A8EAD6400613467 /* Secret.swift in Sources */,

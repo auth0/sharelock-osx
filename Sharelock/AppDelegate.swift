@@ -53,6 +53,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
             return;
         }
         MASShortcutBinder.sharedBinder().bindShortcutWithDefaultsKey(SharelockGlobalShortcutKey, toAction: action)
+
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if (defaults.firstRun) {
+            defaults.firstRun = false
+            defaults.synchronize()
+            let helper = LaunchAtLoginController()
+            helper.launchAtLogin = true
+        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

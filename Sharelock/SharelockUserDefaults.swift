@@ -24,6 +24,7 @@ import Foundation
 
 let SharelockGlobalShortcutKey = "SharelockGlobalShortcut"
 let SharelockEndpointURLKey = "SharelockEndpointURL"
+let SharelockEndpointFirstRunKey = "SharelockEndpointFirstRun"
 
 func SharelockDefaultShortcut() -> MASShortcut {
     let modifiers: UInt = NSEventModifierFlags.ControlKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue | NSEventModifierFlags.CommandKeyMask.rawValue
@@ -34,6 +35,15 @@ func SharelockDefaultShortcut() -> MASShortcut {
 let SharelockDefaultURL = NSURL(string:"https://sharelock.io")!
 
 extension NSUserDefaults {
+
+    var firstRun:Bool {
+        get {
+            return self.boolForKey(SharelockEndpointFirstRunKey)
+        }
+        set {
+            self.setBool(newValue, forKey: SharelockEndpointFirstRunKey)
+        }
+    }
 
     func registerSharelockURL(url: NSURL) {
         self.setObject(NSKeyedArchiver.archivedDataWithRootObject(url), forKey: SharelockEndpointURLKey)
@@ -48,6 +58,9 @@ extension NSUserDefaults {
     }
 
     func registerSharelockDefaults() {
-        self.registerDefaults([SharelockEndpointURLKey: NSKeyedArchiver.archivedDataWithRootObject(SharelockDefaultURL)])
+        self.registerDefaults([
+            SharelockEndpointURLKey: NSKeyedArchiver.archivedDataWithRootObject(SharelockDefaultURL),
+            SharelockEndpointFirstRunKey: true
+            ])
     }
 }

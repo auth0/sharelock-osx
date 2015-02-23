@@ -27,6 +27,9 @@ class SettingsWindowController: NSWindowController {
     @IBOutlet weak var sharelockEndpointField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
     @IBOutlet weak var sharelockVersion: NSTextField!
+    @IBOutlet weak var launchAtLogin: NSButton!
+
+    var loginItemHelper:LaunchAtLoginController!
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -38,6 +41,8 @@ class SettingsWindowController: NSWindowController {
         let marketingVersion = bundleInfo["CFBundleShortVersionString"] as String
         let buildNumber = bundleInfo["CFBundleVersion"] as String
         self.sharelockVersion.stringValue = "v\(marketingVersion) (\(buildNumber))"
+        self.loginItemHelper = LaunchAtLoginController()
+        self.launchAtLogin.state = self.loginItemHelper.launchAtLogin ? NSOnState : NSOffState
     }
     
     @IBAction func applyChanges(sender: AnyObject) {
@@ -51,6 +56,7 @@ class SettingsWindowController: NSWindowController {
         if let shortcut = userShortcut {
             MASShortcutBinder.sharedBinder().registerDefaultShortcuts([SharelockGlobalShortcutKey: shortcut])
         }
+        self.loginItemHelper.launchAtLogin = self.launchAtLogin.state == NSOnState
         self.close()
     }
 
@@ -61,5 +67,6 @@ class SettingsWindowController: NSWindowController {
     @IBAction func restoreDefaults(sender: AnyObject) {
         self.sharelockEndpointField.stringValue = SharelockDefaultURL.absoluteString!
         self.shortcutView.shortcutValue = SharelockDefaultShortcut()
+        self.launchAtLogin.state = NSOnState
     }
 }

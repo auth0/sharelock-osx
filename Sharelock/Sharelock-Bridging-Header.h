@@ -5,3 +5,4 @@
 #import <CCNStatusItem/CCNStatusItem.h>
 #import <MASShortcut/Shortcut.h>
 #import "SharelockContentViewController.h"
+#import "LaunchAtLoginController.h"
