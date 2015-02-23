@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ic-settings.png"
+      "filename" : "icon_settings.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ic-settings@2x.png"
+      "filename" : "icon_settings@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "icon_settings@3x.png"
     }
   ],
   "info" : {

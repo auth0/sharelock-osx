@@ -22,14 +22,14 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="410" height="280"/>
+            <rect key="frame" x="0.0" y="0.0" width="410" height="306"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="xfk-xr-D00">
-                    <rect key="frame" x="0.0" y="230" width="410" height="50"/>
+                    <rect key="frame" x="0.0" y="256" width="410" height="50"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="irV-Cd-cIr">
-                            <rect key="frame" x="16" y="15" width="96" height="19"/>
+                            <rect key="frame" x="16" y="15" width="22" height="19"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="icon_sharelock_title" id="tal-Kd-ij4"/>
                         </imageView>
                         <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="YJU-gh-Uv3">
@@ -55,10 +55,19 @@ Gw
                                 <action selector="closeWindow:" target="-2" id="9La-vh-joX"/>
                             </connections>
                         </button>
+                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-Gc-haQ">
+                            <rect key="frame" x="0.0" y="-2" width="410" height="5"/>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <font key="titleFont" metaFont="system"/>
+                        </box>
                     </subviews>
                     <constraints>
                         <constraint firstItem="qR1-9X-4P8" firstAttribute="top" secondItem="xfk-xr-D00" secondAttribute="top" constant="18" id="1p4-DX-Khu"/>
                         <constraint firstAttribute="centerY" secondItem="irV-Cd-cIr" secondAttribute="centerY" id="7Qc-Kx-pm9"/>
+                        <constraint firstAttribute="trailing" secondItem="tBP-Gc-haQ" secondAttribute="trailing" id="9qy-LW-7YJ"/>
+                        <constraint firstItem="tBP-Gc-haQ" firstAttribute="leading" secondItem="xfk-xr-D00" secondAttribute="leading" id="CcL-oU-AZM"/>
+                        <constraint firstAttribute="bottom" secondItem="tBP-Gc-haQ" secondAttribute="bottom" id="OzX-QX-yYq"/>
                         <constraint firstAttribute="trailing" secondItem="YJU-gh-Uv3" secondAttribute="trailing" constant="16" id="SR9-8Z-Dje"/>
                         <constraint firstAttribute="height" constant="50" id="YIr-93-4dt"/>
                         <constraint firstItem="irV-Cd-cIr" firstAttribute="leading" secondItem="qR1-9X-4P8" secondAttribute="trailing" constant="100" id="d88-Nc-yPo"/>
@@ -67,10 +76,10 @@ Gw
                     </constraints>
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="YRt-wE-VvO">
-                    <rect key="frame" x="0.0" y="0.0" width="410" height="230"/>
+                    <rect key="frame" x="0.0" y="0.0" width="410" height="256"/>
                     <subviews>
                         <textField focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Rp-xn-poy">
-                            <rect key="frame" x="152" y="174" width="204" height="36"/>
+                            <rect key="frame" x="152" y="191" width="195" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="n7x-TH-uq7"/>
                             </constraints>
@@ -92,7 +101,7 @@ Gw
                             </textFieldCell>
                         </textField>
                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4iN-pk-Agv">
-                            <rect key="frame" x="20" y="160" width="370" height="5"/>
+                            <rect key="frame" x="20" y="177" width="370" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="AdD-5f-1Ci"/>
                             </constraints>
@@ -101,11 +110,11 @@ Gw
                             <font key="titleFont" metaFont="system"/>
                         </box>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="C60-xG-XUl">
-                            <rect key="frame" x="18" y="192" width="122" height="18"/>
+                            <rect key="frame" x="18" y="209" width="122" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="118" id="hJl-zA-If3"/>
                             </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Type a secret" id="2oC-LS-ma1">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Type a secret" id="2oC-LS-ma1">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -145,15 +154,15 @@ DQ
                             <font key="titleFont" metaFont="system"/>
                         </box>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KER-Mx-3nA">
-                            <rect key="frame" x="360" y="192" width="32" height="13"/>
+                            <rect key="frame" x="351" y="209" width="41" height="18"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="9999" id="qSf-Bi-PG9">
-                                <font key="font" metaFont="system" size="10"/>
-                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="cnI-6F-Gfl">
-                            <rect key="frame" x="20" y="15" width="76" height="32"/>
+                            <rect key="frame" x="20" y="15" width="78" height="32"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="logo_crafted_by" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Dho-lJ-Yi2">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -214,12 +223,12 @@ DQ
                     </subviews>
                     <constraints>
                         <constraint firstItem="8Rp-xn-poy" firstAttribute="leading" secondItem="C60-xG-XUl" secondAttribute="trailing" constant="16" id="1o3-Uh-VwS"/>
-                        <constraint firstItem="8Rp-xn-poy" firstAttribute="top" secondItem="YRt-wE-VvO" secondAttribute="top" constant="20" id="3dr-9Q-qtx"/>
+                        <constraint firstItem="8Rp-xn-poy" firstAttribute="top" secondItem="YRt-wE-VvO" secondAttribute="top" constant="29" id="3dr-9Q-qtx"/>
                         <constraint firstItem="KER-Mx-3nA" firstAttribute="baseline" secondItem="C60-xG-XUl" secondAttribute="baseline" id="42E-11-E0K"/>
                         <constraint firstAttribute="trailing" secondItem="4iN-pk-Agv" secondAttribute="trailing" constant="20" id="7h2-xr-GAz"/>
                         <constraint firstItem="cnI-6F-Gfl" firstAttribute="leading" secondItem="YRt-wE-VvO" secondAttribute="leading" constant="20" id="93g-DV-Gom"/>
                         <constraint firstAttribute="trailing" secondItem="DVY-Hb-vOx" secondAttribute="trailing" constant="20" id="Cg7-bE-pSF"/>
-                        <constraint firstItem="hPv-B4-DJg" firstAttribute="top" secondItem="4iN-pk-Agv" secondAttribute="bottom" constant="12" id="EkH-J6-sG4"/>
+                        <constraint firstItem="hPv-B4-DJg" firstAttribute="top" secondItem="4iN-pk-Agv" secondAttribute="bottom" constant="29" id="EkH-J6-sG4"/>
                         <constraint firstAttribute="trailing" secondItem="KER-Mx-3nA" secondAttribute="trailing" constant="20" id="GH7-6z-iRD"/>
                         <constraint firstItem="KER-Mx-3nA" firstAttribute="leading" secondItem="8Rp-xn-poy" secondAttribute="trailing" constant="8" id="GUM-0l-nWz"/>
                         <constraint firstItem="a5Z-KQ-hhZ" firstAttribute="centerY" secondItem="cnI-6F-Gfl" secondAttribute="centerY" id="Gf3-JK-a7Y"/>
@@ -286,7 +295,7 @@ DQ
     <resources>
         <image name="icon_error" width="21" height="21"/>
         <image name="icon_settings" width="17" height="17"/>
-        <image name="icon_sharelock_title" width="96" height="19"/>
-        <image name="logo_crafted_by" width="76" height="17"/>
+        <image name="icon_sharelock_title" width="22" height="19"/>
+        <image name="logo_crafted_by" width="78" height="18"/>
     </resources>
 </document>

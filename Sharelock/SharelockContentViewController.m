@@ -46,7 +46,7 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
             }
         }];
         return nil;
-    }] delay:2];
+    }] delay:1];
 }
 
 @end
