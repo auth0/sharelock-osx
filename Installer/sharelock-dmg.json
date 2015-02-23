@@ -4,7 +4,7 @@
   "background": "sharelock_dmg_background.png",
   "icon-size": 92,
   "contents": [
-    { "x": 290, "y": 184, "type": "link", "path": "/Applications" },
-    { "x": 110, "y": 184, "type": "file", "path": "Sharelock.app" }
+    { "x": 290, "y": 155, "type": "link", "path": "/Applications" },
+    { "x": 110, "y": 155, "type": "file", "path": "Sharelock.app" }
   ]
 }
