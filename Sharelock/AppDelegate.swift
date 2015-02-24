@@ -70,10 +70,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    @IBAction func closePopover(sender: AnyObject) {
-        self.statusItemPopup.hidePopover()
-    }
-
     func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
         return true
     }
@@ -83,6 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         self.settingsController.window?.center()
         self.settingsController.showWindow(self)
         NSApp.activateIgnoringOtherApps(true)
+        self.statusItemPopup.hidePopover()
     }
 
     private func registerAppDefaults() {
