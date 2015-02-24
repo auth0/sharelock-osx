@@ -1,7 +1,7 @@
 FRAMEWORK_SEARCH_PATHS = "${PODS_ROOT}/Sparkle" "$(PODS_ROOT)/Sparkle"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CCNStatusItem" "${PODS_ROOT}/Headers/Public/MASShortcut" "${PODS_ROOT}/Headers/Public/ReactiveCocoa" "${PODS_ROOT}/Headers/Public/Sparkle"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CCNStatusItem" -isystem "${PODS_ROOT}/Headers/Public/MASShortcut" -isystem "${PODS_ROOT}/Headers/Public/ReactiveCocoa" -isystem "${PODS_ROOT}/Headers/Public/Sparkle"
-OTHER_LDFLAGS = -ObjC -l"Pods-CCNStatusItem" -l"Pods-MASShortcut" -l"Pods-ReactiveCocoa" -l"Pods-Sparkle" -framework "AppKit" -framework "Carbon" -framework "Sparkle"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AXStatusItemPopup" "${PODS_ROOT}/Headers/Public/MASShortcut" "${PODS_ROOT}/Headers/Public/ReactiveCocoa" "${PODS_ROOT}/Headers/Public/Sparkle"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AXStatusItemPopup" -isystem "${PODS_ROOT}/Headers/Public/MASShortcut" -isystem "${PODS_ROOT}/Headers/Public/ReactiveCocoa" -isystem "${PODS_ROOT}/Headers/Public/Sparkle"
+OTHER_LDFLAGS = -ObjC -l"Pods-AXStatusItemPopup" -l"Pods-MASShortcut" -l"Pods-ReactiveCocoa" -l"Pods-Sparkle" -framework "AppKit" -framework "Carbon" -framework "Sparkle"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

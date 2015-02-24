@@ -28,6 +28,7 @@ class SettingsWindowController: NSWindowController {
     @IBOutlet weak var shortcutView: MASShortcutView!
     @IBOutlet weak var sharelockVersion: NSTextField!
     @IBOutlet weak var launchAtLogin: NSButton!
+    @IBOutlet weak var pasteFromClipboard: NSButton!
 
     var loginItemHelper:LaunchAtLoginController!
 
@@ -43,16 +44,18 @@ class SettingsWindowController: NSWindowController {
         self.sharelockVersion.stringValue = "v\(marketingVersion) (\(buildNumber))"
         self.loginItemHelper = LaunchAtLoginController()
         self.launchAtLogin.state = self.loginItemHelper.launchAtLogin ? NSOnState : NSOffState
+        self.pasteFromClipboard.state = defaults.pasteFromClipboard ? NSOnState : NSOffState
     }
     
     @IBAction func applyChanges(sender: AnyObject) {
         let userShortcut:MASShortcut? = self.shortcutView.shortcutValue
         let sharelockEndpoint = self.sharelockEndpointField.stringValue
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.pasteFromClipboard = self.pasteFromClipboard.state == NSOnState
         if let endpointURL = NSURL(string: sharelockEndpoint) {
-            let defaults = NSUserDefaults.standardUserDefaults()
             defaults.registerSharelockURL(endpointURL)
-            defaults.synchronize()
         }
+        defaults.synchronize()
         if let shortcut = userShortcut {
             MASShortcutBinder.sharedBinder().registerDefaultShortcuts([SharelockGlobalShortcutKey: shortcut])
         }
@@ -68,5 +71,6 @@ class SettingsWindowController: NSWindowController {
         self.sharelockEndpointField.stringValue = SharelockDefaultURL.absoluteString!
         self.shortcutView.shortcutValue = SharelockDefaultShortcut()
         self.launchAtLogin.state = NSOnState
+        self.pasteFromClipboard.state = NSOnState
     }
 }

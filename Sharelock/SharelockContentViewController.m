@@ -21,11 +21,11 @@
 // THE SOFTWARE.
 
 #import "SharelockContentViewController.h"
-#import "CCNStatusItem.h"
 #import "Sharelock-Swift.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <Sparkle/Sparkle.h>
+#import <AXStatusItemPopup/AXStatusItemPopup.h>
 
 NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 
@@ -156,7 +156,7 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
             return NSLocalizedString(@"Please enter a text to share and a list of E-Mail, twitter handle or E-Mail domain names", @"Invalid data & share list message");
         }
         if (![validData boolValue]) {
-            return NSLocalizedString(@"Please enter a text to share up to 500 characters", @"Invalid data message");
+            return NSLocalizedString(@"Please enter a secret between 1 and 500 characters", @"Invalid data message");
         }
         if (![validACL boolValue]) {
             return NSLocalizedString(@"Please enter a valid list of E-Mail, twitter handle or E-Mail domain names", @"Invalid share list message");
@@ -166,16 +166,19 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     }];
 }
 
-- (void)viewWillAppear {
+- (void)viewDidAppear {
+    [NSApp activateIgnoringOtherApps:YES];
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     NSString *content = [pasteboard stringForType:NSPasteboardTypeString];
-    if (content) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (defaults.pasteFromClipboard && content) {
         self.dataField.stringValue = content;
         self.secret.data = content;
-        [self.shareField becomeFirstResponder];
+        [self.shareField.window makeFirstResponder:self.shareField];
         [pasteboard clearContents];
     } else {
-        [self.dataField becomeFirstResponder];
+        [self.dataField.window makeFirstResponder:self.dataField];
+        self.dataField.stringValue = @"";
     }
 }
 
@@ -207,8 +210,13 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 }
 
 - (IBAction)closeWindow:(id)sender {
-    [[[[CCNStatusItem sharedInstance] statusItem] button] performClick:self];
+    AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    AXStatusItemPopup *statusItem = delegate.statusItemPopup;
+    [statusItem hidePopover];
 }
 
+- (void)cancelOperation:(id)sender {
+    [self closeWindow:sender];
+}
 @end
 

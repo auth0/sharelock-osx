@@ -31,6 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
 
     var sharelockController: NSViewController!
     var settingsController: NSWindowController!
+    var statusItemPopup: AXStatusItemPopup!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         self.registerAppDefaults()
@@ -39,17 +40,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         sharelockController.preferredContentSize = SharelockMainScreenSize
         let image = NSImage(named: "icon_sharelock_menu_bar")
         image?.setTemplate(true)
-        let appearance = CCNStatusItemWindowAppearance.defaultAppearance()
-        appearance.backgroundColor = NSColor(calibratedRed: 237/255, green: 237/255, blue: 237/255, alpha: 1)
-        appearance.presentationTransition = CCNPresentationTransition.None
-        CCNStatusItem.setWindowAppearance(appearance)
-        CCNStatusItem.presentStatusItemWithImage(image, contentViewController: sharelockController)
+        self.statusItemPopup = AXStatusItemPopup(viewController: sharelockController, image: image)
 
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("showSettings"), name: ShowSettingsNotification, object: nil)
 
-        let action = { () -> Void in
-            CCNStatusItem.sharedInstance().statusItem.button?.performClick(nil)
+        let action = { [weak self] () -> Void in
+            if let item = self?.statusItemPopup {
+                if item.active {
+                    item.hidePopover()
+                } else {
+                    item.showPopoverAnimated(true)
+                }
+            }
             return;
         }
         MASShortcutBinder.sharedBinder().bindShortcutWithDefaultsKey(SharelockGlobalShortcutKey, toAction: action)
@@ -65,6 +68,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
 
     func applicationWillTerminate(aNotification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    @IBAction func closePopover(sender: AnyObject) {
+        self.statusItemPopup.hidePopover()
     }
 
     func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
