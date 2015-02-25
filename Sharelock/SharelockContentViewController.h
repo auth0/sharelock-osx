@@ -23,6 +23,7 @@
 #import <Cocoa/Cocoa.h>
 
 FOUNDATION_EXPORT NSString * const ShowSettingsNotification;
+FOUNDATION_EXPORT NSString * const SharelockLinkNotificationLinkKey;
 
 @interface SharelockContentViewController : NSViewController
 

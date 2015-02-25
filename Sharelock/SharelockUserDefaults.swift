@@ -28,8 +28,8 @@ let SharelockEndpointFirstRunKey = "SharelockEndpointFirstRun"
 let SharelockPasteFromClipboardKey = "SharelockPasteFromClipboard"
 
 func SharelockDefaultShortcut() -> MASShortcut {
-    let modifiers: UInt = NSEventModifierFlags.ControlKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue | NSEventModifierFlags.CommandKeyMask.rawValue
-    let key: UInt = UInt(kVK_ANSI_V)
+    let modifiers: UInt = NSEventModifierFlags.ShiftKeyMask.rawValue | NSEventModifierFlags.CommandKeyMask.rawValue
+    let key: UInt = UInt(kVK_ANSI_L)
     return MASShortcut(keyCode: key, modifierFlags: modifiers)
 }
 

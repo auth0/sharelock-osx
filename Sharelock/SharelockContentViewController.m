@@ -28,6 +28,7 @@
 #import <AXStatusItemPopup/AXStatusItemPopup.h>
 
 NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
+NSString * const SharelockLinkNotificationLinkKey = @"SharelockLinkNotificationLinkKey";
 
 @interface SharelockAPI (Reactive)
 - (RACSignal *)linkForSecret:(Secret *)secret;
@@ -113,9 +114,12 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
         [pasteboard clearContents];
         [pasteboard writeObjects:@[secret.link.absoluteString]];
         NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = NSLocalizedString(@"Ready to share", @"Link in Clipboard Title");
-        notification.informativeText = NSLocalizedString(@"Your secured link is in your Clipboard", @"Link in Clipboard Message");
+        notification.title = NSLocalizedString(@"A Sharelock link is now in your clipboard!", @"Link in Clipboard Title");
+        notification.informativeText = NSLocalizedString(@"You can share it however you want: e-mail, twitter, sms, etc.", @"Link in Clipboard Message");
         notification.soundName = NSUserNotificationDefaultSoundName;
+        notification.userInfo = @{
+                                  SharelockLinkNotificationLinkKey: secret.link.absoluteString,
+                                  };
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         [self closeWindow:nil];
     }];

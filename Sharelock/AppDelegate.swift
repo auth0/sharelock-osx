@@ -67,6 +67,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
+        let userInfo = notification.userInfo
+        if let linkString = userInfo?[SharelockLinkNotificationLinkKey] as String? {
+            if let url = NSURL(string: linkString) {
+                NSWorkspace.sharedWorkspace().openURL(url)
+            }
+        }
+    }
+
     func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
         return true
     }

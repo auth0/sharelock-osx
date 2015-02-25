@@ -24,18 +24,18 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView appearanceType="aqua" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="410" height="318"/>
+            <rect key="frame" x="0.0" y="0.0" width="502" height="318"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="xfk-xr-D00">
-                    <rect key="frame" x="0.0" y="268" width="410" height="50"/>
+                    <rect key="frame" x="0.0" y="268" width="502" height="50"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="irV-Cd-cIr">
                             <rect key="frame" x="16" y="15" width="22" height="19"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="icon_sharelock_title" id="tal-Kd-ij4"/>
                         </imageView>
                         <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="YJU-gh-Uv3">
-                            <rect key="frame" x="376" y="15" width="18" height="19"/>
+                            <rect key="frame" x="468" y="15" width="18" height="19"/>
                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="icon_settings" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="SXe-6Q-1mg">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="cellTitle"/>
@@ -45,7 +45,7 @@
                             </connections>
                         </button>
                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-Gc-haQ">
-                            <rect key="frame" x="0.0" y="-2" width="410" height="5"/>
+                            <rect key="frame" x="0.0" y="-2" width="502" height="5"/>
                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <font key="titleFont" metaFont="system"/>
@@ -63,14 +63,14 @@
                     </constraints>
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="YRt-wE-VvO">
-                    <rect key="frame" x="0.0" y="0.0" width="410" height="268"/>
+                    <rect key="frame" x="0.0" y="0.0" width="502" height="268"/>
                     <subviews>
                         <textField focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Rp-xn-poy">
-                            <rect key="frame" x="152" y="203" width="195" height="36"/>
+                            <rect key="frame" x="152" y="203" width="287" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="n7x-TH-uq7"/>
                             </constraints>
-                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Any text up to 500 characters" id="Lck-bP-DUC">
+                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Any secret, between 1 and 500 characters" id="Lck-bP-DUC">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -81,14 +81,14 @@
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hPv-B4-DJg">
                             <rect key="frame" x="18" y="144" width="122" height="18"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Who to share with" id="JGm-rq-uLu">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Who gets access?" id="JGm-rq-uLu">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <box focusRingType="none" appearanceType="aqua" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4iN-pk-Agv">
-                            <rect key="frame" x="20" y="189" width="370" height="5"/>
+                            <rect key="frame" x="20" y="189" width="462" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="AdD-5f-1Ci"/>
                             </constraints>
@@ -101,15 +101,15 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="118" id="hJl-zA-If3"/>
                             </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Type a secret" id="2oC-LS-ma1">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Your Secret" id="2oC-LS-ma1">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField focusRingType="none" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-Hb-vOx">
-                            <rect key="frame" x="152" y="126" width="240" height="36"/>
-                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="E-mail, Twitter, E-mail Domain" id="V2S-lk-why">
+                            <rect key="frame" x="152" y="126" width="332" height="36"/>
+                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Email, Twitter, Email Domain" id="V2S-lk-why">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -119,7 +119,7 @@
                             </connections>
                         </textField>
                         <button toolTip="Press Enter to Save in Clipboard" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a5Z-KQ-hhZ">
-                            <rect key="frame" x="279" y="13" width="117" height="32"/>
+                            <rect key="frame" x="371" y="13" width="117" height="32"/>
                             <buttonCell key="cell" type="push" title="Sharelock It!" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gK2-wf-3GD">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -132,7 +132,7 @@ DQ
                             </connections>
                         </button>
                         <box focusRingType="none" appearanceType="aqua" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-O0-yRW">
-                            <rect key="frame" x="20" y="112" width="370" height="5"/>
+                            <rect key="frame" x="20" y="112" width="462" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="VZG-hn-KAf"/>
                             </constraints>
@@ -141,7 +141,7 @@ DQ
                             <font key="titleFont" metaFont="system"/>
                         </box>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KER-Mx-3nA">
-                            <rect key="frame" x="351" y="221" width="41" height="18"/>
+                            <rect key="frame" x="443" y="221" width="41" height="18"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="9999" id="qSf-Bi-PG9">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,7 +159,7 @@ DQ
                             </connections>
                         </button>
                         <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5G-bR-hBr">
-                            <rect key="frame" x="20" y="72" width="370" height="27"/>
+                            <rect key="frame" x="20" y="72" width="462" height="27"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-9m-CYw">
                                     <rect key="frame" x="0.0" y="3" width="21" height="21"/>
@@ -170,7 +170,7 @@ DQ
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_error" id="UA5-9q-Hsh"/>
                                 </imageView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhS-Bl-Bbr">
-                                    <rect key="frame" x="29" y="0.0" width="343" height="27"/>
+                                    <rect key="frame" x="29" y="0.0" width="435" height="27"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="pepepe" id="3oe-Ug-In3">
                                         <font key="font" size="14" name="HelveticaNeue-Light"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -257,7 +257,7 @@ DQ
                 <constraint firstItem="YRt-wE-VvO" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="gmg-Ic-GGx"/>
                 <constraint firstItem="YRt-wE-VvO" firstAttribute="top" secondItem="xfk-xr-D00" secondAttribute="bottom" id="jap-pY-utH"/>
             </constraints>
-            <point key="canvasLocation" x="518" y="321"/>
+            <point key="canvasLocation" x="564" y="321"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="PaN-eD-0TL"/>
         <menu title="Sharelock" showsStateColumn="NO" autoenablesItems="NO" id="EWP-Ci-4BS">
