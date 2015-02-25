@@ -63,6 +63,7 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
 @property (weak, nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
 @property (weak, nonatomic) IBOutlet NSView *errorMessageContainer;
 @property (weak, nonatomic) IBOutlet NSTextField *errorMessageLabel;
+@property (weak) IBOutlet NSView *titleView;
 
 @property (strong, nonatomic) RACCommand *command;
 @property (strong, nonatomic) Secret *secret;
@@ -78,6 +79,8 @@ NSString * const ShowSettingsNotification = @"ShowSettingsNotification";
     self.fieldContainerView.layer.backgroundColor = [[NSColor whiteColor] CGColor];
     self.shareField.toolTip = NSLocalizedString(@"Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)", @"Share Field Tooltip");
     self.dataField.toolTip = NSLocalizedString(@"Passwords, keys, URLs, any text up to 500 characters.", @"Data Field Tooltip");
+    self.titleView.wantsLayer = YES;
+    self.titleView.layer.backgroundColor = [NSColor colorWithCalibratedWhite:0.929 alpha:1.000].CGColor;
 
     @weakify(self);
     RAC(self.secret, data) = self.dataField.rac_textSignal;

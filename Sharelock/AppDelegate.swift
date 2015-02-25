@@ -22,8 +22,6 @@
 
 import Cocoa
 
-let SharelockMainScreenSize = NSSize(width: 410, height: 306)
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotificationCenterDelegate {
 
@@ -37,7 +35,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
         self.registerAppDefaults()
 
         sharelockController = SharelockContentViewController(nibName: "SharelockContentViewController", bundle: nil)
-        sharelockController.preferredContentSize = SharelockMainScreenSize
         let image = NSImage(named: "icon_sharelock_menu_bar")
         image?.setTemplate(true)
         self.statusItemPopup = AXStatusItemPopup(viewController: sharelockController, image: image)

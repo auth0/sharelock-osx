@@ -17,6 +17,7 @@
                 <outlet property="settingsMenu" destination="EWP-Ci-4BS" id="2d6-ju-N1a"/>
                 <outlet property="shareButton" destination="a5Z-KQ-hhZ" id="fxV-6b-Y4q"/>
                 <outlet property="shareField" destination="DVY-Hb-vOx" id="Lw6-mL-33a"/>
+                <outlet property="titleView" destination="xfk-xr-D00" id="4xt-U1-Qzc"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
