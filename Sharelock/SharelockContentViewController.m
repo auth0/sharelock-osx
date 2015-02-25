@@ -182,7 +182,6 @@ NSString * const SharelockLinkNotificationLinkKey = @"SharelockLinkNotificationL
         self.dataField.stringValue = content;
         self.secret.data = content;
         [self.shareField.window makeFirstResponder:self.shareField];
-        [pasteboard clearContents];
     } else {
         [self.dataField.window makeFirstResponder:self.dataField];
         self.dataField.stringValue = @"";
@@ -214,6 +213,22 @@ NSString * const SharelockLinkNotificationLinkKey = @"SharelockLinkNotificationL
 
 - (IBAction)goToAuth0Site:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://auth0.com"]];
+}
+
+- (IBAction)goToAbout:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://sharelock.io/about"]];
+}
+
+- (IBAction)goToPrivacy:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://sharelock.io/privacy"]];
+}
+
+- (IBAction)goToSecurity:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://sharelock.io/security"]];
+}
+
+- (IBAction)goToTerms:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://sharelock.io/tos"]];
 }
 
 - (IBAction)closeWindow:(id)sender {
