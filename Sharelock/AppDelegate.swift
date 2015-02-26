@@ -36,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotifi
 
         sharelockController = SharelockContentViewController(nibName: "SharelockContentViewController", bundle: nil)
         let image = NSImage(named: "icon_sharelock_menu_bar")
+        image?.setTemplate(true)
         let alternativeImage = NSImage(named: "icon_sharelock_menu_bar_pressed")
         self.statusItemPopup = AXStatusItemPopup(viewController: sharelockController, image: image, alternateImage: alternativeImage)
 
