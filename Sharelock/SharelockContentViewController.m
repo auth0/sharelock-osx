@@ -212,7 +212,7 @@ NSString * const SharelockLinkNotificationLinkKey = @"SharelockLinkNotificationL
 }
 
 - (IBAction)goToAuth0Site:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://auth0.com"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://auth0.com/?utm_source=slockmacapp"]];
 }
 
 - (IBAction)goToAbout:(id)sender {
